@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">ウェブ</string>
+	<string name="download_image">画像をダウンロードする</string>
+	<string name="share_image">写真を共有する</string>
+	<string name="chose">選んでください</string>
+	<string name="save_success">保存しました</string>
+	<string name="save_error">保存できませんでした</string>
+	<string name="share_to">に共有する</string>
+	<string name="camera">カメラ</string>
+	<string name="album">アルバム</string>
+	<string name="sure">決定する</string>
+	<string name="cancel">キャンセル</string>
+	<string name="no_camera">カメラの保管許可がないと開けません</string>
+	<string name="no_album">アルバムにアクセスできない場合は開くことができません</string>
+	<string name="location_info">位置情報</string>
+	<string name="get_your_location">あなたの場所へのアクセスを許可しますか？</string>
+	<string name="allow">許可する</string>
+	<string name="refuse">許可されていません</string>
+</resources>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="re_send">Repeat in seconds</string>
+	<string name="re_send_code">Retrieve the authentication code</string>
+	<string name="empty_tip">No data available for the time being</string>
+	<string name="no_network_tip">No network</string>
+	<string name="error_tip">Load failure</string>
+	<string name="time_out_tip">Load timeout</string>
+	<string name="no_login_tip">You haven\'t logged in yet.</string>
+	<string name="btn_login">Sign in</string>
+	<string name="loading_tip">Loading...</string>
+	<string name="retry_tip">Touch the screen and retry</string>
+	<string name="cancel">cancel</string>
+</resources>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">捲筒紙</string>
+	<string name="download_image">下載圖片</string>
+	<string name="share_image">分享圖片</string>
+	<string name="chose">請選擇</string>
+	<string name="save_success">保存成功</string>
+	<string name="save_error">保存失敗</string>
+	<string name="share_to">分享到</string>
+	<string name="camera">相機</string>
+	<string name="album">相冊</string>
+	<string name="sure">確定</string>
+	<string name="cancel">取消</string>
+	<string name="no_camera">沒有相機存儲權限，無法打開</string>
+	<string name="no_album">沒有訪問相冊權限，無法打開</string>
+	<string name="location_info">位置信息</string>
+	<string name="get_your_location">允許獲取您的位置信息嗎？</string>
+	<string name="allow">允許</string>
+	<string name="refuse">不允許</string>
+</resources>

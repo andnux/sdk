@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">편물</string>
+	<string name="download_image">이미지 다운로드</string>
+	<string name="share_image">사진 공유</string>
+	<string name="chose">선택해주세요.</string>
+	<string name="save_success">성공적으로 저장되었습니다.</string>
+	<string name="save_error">저장하지 못했습니다.</string>
+	<string name="share_to">공유 대상</string>
+	<string name="camera">카메라</string>
+	<string name="album">앨범</string>
+	<string name="sure">결정</string>
+	<string name="cancel">취소</string>
+	<string name="no_camera">카메라 저장 권한없이 열 수 없습니다.</string>
+	<string name="no_album">앨범에 액세스하지 않고 열 수 없습니다.</string>
+	<string name="location_info">위치 정보</string>
+	<string name="get_your_location">내 위치에 대한 액세스를 허용 하시겠습니까?</string>
+	<string name="allow">허용하다</string>
+	<string name="refuse">허용되지 않음</string>
+</resources>

@@ -1,0 +1,10 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="top.andnux.ui">
+
+    <application>
+        <activity
+            android:name=".image.photoview.PhotoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/fullscreen" />
+    </application>
+</manifest>

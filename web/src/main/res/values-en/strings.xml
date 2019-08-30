@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">web</string>
+	<string name="download_image">Download image</string>
+	<string name="share_image">share pictures</string>
+	<string name="chose">please choose</string>
+	<string name="save_success">Successfully saved</string>
+	<string name="save_error">Save failed</string>
+	<string name="share_to">share to</string>
+	<string name="camera">camera</string>
+	<string name="album">Album</string>
+	<string name="sure">determine</string>
+	<string name="cancel">cancel</string>
+	<string name="no_camera">Cannot open without camera storage permission</string>
+	<string name="no_album">Can\'t open without access to albums</string>
+	<string name="location_info">location information</string>
+	<string name="get_your_location">Allow access to your location?</string>
+	<string name="allow">allow</string>
+	<string name="refuse">Not allowed</string>
+</resources>

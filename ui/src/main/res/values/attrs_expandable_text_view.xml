@@ -1,0 +1,15 @@
+<resources>
+    <declare-styleable name="ExpandableTextView">
+        <attr name="mode" format="enum">
+            <enum name="text" value="1" />
+            <enum name="icon" value="0" />
+        </attr>
+        <attr name="expandTotalLine" format="integer" />
+        <attr name="expandTextColor" format="color|reference" />
+        <attr name="expandText" format="string|reference" />
+        <attr name="expandIcon" format="reference" />
+        <attr name="retractTextColor" format="color|reference" />
+        <attr name="retractText" format="string|reference" />
+        <attr name="retractIcon" format="reference" />
+    </declare-styleable>
+</resources>

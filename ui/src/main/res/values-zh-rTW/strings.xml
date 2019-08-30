@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="re_send">秒後可重發</string>
+	<string name="re_send_code">重新獲取驗證碼</string>
+	<string name="empty_tip">暫無數據</string>
+	<string name="no_network_tip">沒有網絡</string>
+	<string name="error_tip">加載失敗</string>
+	<string name="time_out_tip">加載超時</string>
+	<string name="no_login_tip">你還沒有登錄</string>
+	<string name="btn_login">登入</string>
+	<string name="loading_tip">加載中……</string>
+	<string name="retry_tip">輕觸荧幕重試</string>
+	<string name="cancel">取消</string>
+</resources>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="re_send">초 후 재발할 수 있다</string>
+	<string name="re_send_code">인증 코드 다시 가져오기</string>
+	<string name="empty_tip">일시 데이터 없음</string>
+	<string name="no_network_tip">네트워크 없음</string>
+	<string name="error_tip">불러오기 실패</string>
+	<string name="time_out_tip">시간 초과</string>
+	<string name="no_login_tip">로그인 아직 안 했어요.</string>
+	<string name="btn_login">로그인</string>
+	<string name="loading_tip">불러오기 중...</string>
+	<string name="retry_tip">화면 재시도</string>
+	<string name="cancel">취소</string>
+</resources>

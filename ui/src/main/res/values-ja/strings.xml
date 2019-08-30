@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="re_send">秒後に再送信できます</string>
+	<string name="re_send_code">認証コードを再取得</string>
+	<string name="empty_tip">データがありません</string>
+	<string name="no_network_tip">ネットワークがありません</string>
+	<string name="error_tip">読み込みに失敗しました</string>
+	<string name="time_out_tip">読み込みタイムアウト</string>
+	<string name="no_login_tip">あなたはまだログインしていません</string>
+	<string name="btn_login">ログイン</string>
+	<string name="loading_tip">読み込み中..</string>
+	<string name="retry_tip">タッチスクリーン再試行</string>
+	<string name="cancel">キャンセル</string>
+</resources>

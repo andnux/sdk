@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<top.andnux.ui.snackbar.SnackBarContentLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="?actionBarSize"
+    android:background="?colorPrimary"
+    android:orientation="horizontal"
+    android:paddingLeft="@dimen/dp10"
+    android:paddingRight="@dimen/dp10">
+
+    <TextView
+        android:id="@+id/snackbar_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:singleLine="true"
+        android:text="张春林"
+        android:textColor="#ffffff" />
+
+    <TextView
+        android:id="@+id/snackbar_action"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:textColor="#ffffff"
+        android:visibility="gone" />
+
+</top.andnux.ui.snackbar.SnackBarContentLayout>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="re_send">ثانية بعد الإرسال</string>
+	<string name="re_send_code">الحصول على رمز التحقق</string>
+	<string name="empty_tip">بيانات مؤقتة</string>
+	<string name="no_network_tip">بدون انترنت</string>
+	<string name="error_tip">فشل التحميل</string>
+	<string name="time_out_tip">تحميل مهلة</string>
+	<string name="no_login_tip">أنت لم تسجل بعد</string>
+	<string name="btn_login">تسجيل الدخول</string>
+	<string name="loading_tip">تحميل برنامج</string>
+	<string name="retry_tip">شاشة لمس المحاولة</string>
+	<string name="cancel">ألغى</string>
+</resources>
