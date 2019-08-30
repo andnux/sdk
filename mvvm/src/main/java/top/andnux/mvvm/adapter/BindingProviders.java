@@ -13,13 +13,26 @@ import androidx.databinding.BindingAdapter;
 import androidx.databinding.BindingConversion;
 import androidx.databinding.adapters.ListenerUtil;
 
-import com.bumptech.glide.Glide;
-
 import java.util.Map;
 
 import top.andnux.mvvm.R;
 
 public class BindingProviders {
+
+    private static ImageLoader sImageLoader = new ImageLoader() {
+
+        @Override
+        public void display(ImageView view, String url,
+                            Drawable loading,
+                            Drawable placeholder,
+                            Drawable error) {
+
+        }
+    };
+
+    public static void setImageLoader(ImageLoader imageLoader) {
+        sImageLoader = imageLoader;
+    }
 
     @BindingAdapter("url")
     public static void loadUrl(WebView view, String url) {
@@ -48,19 +61,12 @@ public class BindingProviders {
 
     @BindingAdapter("url")
     public static void loadImage(ImageView view, String url) {
-        Glide.with(view.getContext())
-                .load(url)
-                .centerCrop()
-                .into(view);
+        sImageLoader.display(view, url, null, null, null);
     }
 
     @BindingAdapter(value = {"url", "error"}, requireAll = false)
     public static void loadImage(ImageView view, String url, Drawable error) {
-        Glide.with(view.getContext())
-                .load(url)
-                .error(error)
-                .centerCrop()
-                .into(view);
+        sImageLoader.display(view, url, null, error, null);
     }
 
 
@@ -69,11 +75,7 @@ public class BindingProviders {
         if (url == null) {
             view.setImageDrawable(placeHolder);
         } else {
-            Glide.with(view.getContext())
-                    .load(url)
-                    .error(error)
-                    .centerCrop()
-                    .into(view);
+            sImageLoader.display(view, url, null, placeHolder, error);
         }
     }
 
@@ -83,13 +85,7 @@ public class BindingProviders {
         if (url == null) {
             view.setImageDrawable(placeHolder);
         } else {
-            view.setImageDrawable(loading);
-            Glide.with(view.getContext())
-                    .load(url)
-                    .placeholder(placeHolder)
-                    .error(error)
-                    .centerCrop()
-                    .into(view);
+            sImageLoader.display(view, url, loading, error, placeHolder);
         }
     }
 
