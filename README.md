@@ -10,18 +10,18 @@ allprojects {
 - Step 2. Add the dependency
 ```groovy
 dependencies {
-    implementation 'com.github.andnux:ChunLin:0.0.11'
+    implementation 'com.github.andnux:sdk:0.0.1'
     or
-    implementation 'com.github.andnux.ChunLin:utils:0.0.11'
-    implementation 'com.github.andnux.ChunLin:glide:0.0.11'
-    implementation 'com.github.andnux.ChunLin:ui:0.0.11'
-    implementation 'com.github.andnux.ChunLin:adapter:0.0.11'
-    implementation 'com.github.andnux.ChunLin:mvvm:0.0.11'
-    implementation 'com.github.andnux.ChunLin:zbar:0.0.11'
-    implementation 'com.github.andnux.ChunLin:mvp:0.0.11'
-    implementation 'com.github.andnux.ChunLin:http:0.0.11'
-    implementation 'com.github.andnux.ChunLin:base:0.0.11'
-    implementation 'com.github.andnux.ChunLin:compat:0.0.11'
-    implementation 'com.github.andnux.ChunLin:web:0.0.11'
+    implementation 'com.github.andnux.sdk:utils:0.0.1'
+    implementation 'com.github.andnux.sdk:glide:0.0.1'
+    implementation 'com.github.andnux.sdk:ui:0.0.1'
+    implementation 'com.github.andnux.sdk:adapter:0.0.1'
+    implementation 'com.github.andnux.sdk:mvvm:0.0.1'
+    implementation 'com.github.andnux.sdk:zbar:0.0.1'
+    implementation 'com.github.andnux.sdk:mvp:0.0.1'
+    implementation 'com.github.andnux.sdk:http:0.0.1'
+    implementation 'com.github.andnux.sdk:base:0.0.1'
+    implementation 'com.github.andnux.sdk:compat:0.0.1'
+    implementation 'com.github.andnux.sdk:web:0.0.1'
 }
 ```
