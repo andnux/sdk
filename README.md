@@ -10,20 +10,20 @@ allprojects {
 - Step 2. Add the dependency
 ```groovy
 dependencies {
-    implementation 'com.github.andnux:sdk:0.0.1'
+    implementation 'com.github.andnux:sdk:0.0.4'
     or
-    implementation 'com.github.andnux.sdk:web:0.0.1'
-    implementation 'com.github.andnux.sdk:base:0.0.1'
-    implementation 'com.github.andnux.sdk:ui:0.0.1'
-    implementation 'com.github.andnux.sdk:adapter:0.0.1'
-    implementation 'com.github.andnux.sdk:language:0.0.1'
-    implementation 'com.github.andnux.sdk:http:0.0.1'
-    implementation 'com.github.andnux.sdk:utils:0.0.1'
-    implementation 'com.github.andnux.sdk:mvp:0.0.1'
-    implementation 'com.github.andnux.sdk:zbar:0.0.1'
-    implementation 'com.github.andnux.sdk:skin:0.0.1'
-    implementation 'com.github.andnux.sdk:compat:0.0.1'
-    implementation 'com.github.andnux.sdk:mvvm:0.0.1'
-    implementation 'com.github.andnux.sdk:pay:0.0.1'
+    implementation 'com.github.andnux.sdk:web:0.0.4'
+    implementation 'com.github.andnux.sdk:base:0.0.4'
+    implementation 'com.github.andnux.sdk:ui:0.0.4'
+    implementation 'com.github.andnux.sdk:adapter:0.0.4'
+    implementation 'com.github.andnux.sdk:language:0.0.4'
+    implementation 'com.github.andnux.sdk:http:0.0.4'
+    implementation 'com.github.andnux.sdk:utils:0.0.4'
+    implementation 'com.github.andnux.sdk:mvp:0.0.4'
+    implementation 'com.github.andnux.sdk:zbarui:0.0.4'
+    implementation 'com.github.andnux.sdk:skin:0.0.4'
+    implementation 'com.github.andnux.sdk:compat:0.0.4'
+    implementation 'com.github.andnux.sdk:mvvm:0.0.4'
+    implementation 'com.github.andnux.sdk:pay:0.0.4'
 }
 ```
