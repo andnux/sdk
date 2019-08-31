@@ -8,8 +8,8 @@ import android.view.View;
 import android.widget.Toast;
 
 import top.andnux.compat.ToastCompat;
-import top.andnux.zbar.ScanCodeConfig;
-import top.andnux.zbar.ScanCodeManager;
+import top.andnux.zbarui.ScanCodeConfig;
+import top.andnux.zbarui.ScanCodeManager;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
