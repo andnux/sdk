@@ -44,7 +44,7 @@
     </FrameLayout>
 
     <!-- 二维码识别界面 -->
-    <top.andnux.zbar.CameraPreview
+    <top.andnux.zbarui.CameraPreview
         android:id="@+id/cp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -79,7 +79,7 @@
                 android:src="@drawable/shadow" />
 
 
-            <top.andnux.zbar.view.ScanView
+            <top.andnux.zbarui.view.ScanView
                 android:id="@+id/sv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -155,7 +155,7 @@
         android:layout_marginRight="30dp"
         android:orientation="vertical">
 
-        <top.andnux.zbar.view.VerticalSeekBar
+        <top.andnux.zbarui.view.VerticalSeekBar
             android:id="@+id/vsb_zoom"
             android:layout_width="wrap_content"
             android:layout_height="200dp"

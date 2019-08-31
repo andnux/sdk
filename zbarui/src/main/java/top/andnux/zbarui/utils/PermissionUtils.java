@@ -1,4 +1,4 @@
-package top.andnux.zbar.utils;
+package top.andnux.zbarui.utils;
 
 import android.app.Activity;
 import android.content.Context;
@@ -116,7 +116,7 @@ public final class PermissionUtils {
      * @return the single {@link PermissionUtils} instance
      */
     public static PermissionUtils permission(Context mContext,
-                                             @PermissionConstants.Permission final String... permissions) {
+                                             @top.andnux.zbarui.utils.PermissionConstants.Permission final String... permissions) {
         mApp = mContext;
         PERMISSIONS = getPermissions();
         return new PermissionUtils(permissions);
@@ -125,7 +125,7 @@ public final class PermissionUtils {
     private PermissionUtils(final String... permissions) {
         mPermissions = new LinkedHashSet<>();
         for (String permission : permissions) {
-            for (String aPermission : PermissionConstants.getPermissions(permission)) {
+            for (String aPermission : top.andnux.zbarui.utils.PermissionConstants.getPermissions(permission)) {
                 if (PERMISSIONS.contains(aPermission)) {
                     mPermissions.add(aPermission);
                 }

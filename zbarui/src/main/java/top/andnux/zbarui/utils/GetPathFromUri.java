@@ -1,4 +1,4 @@
-package top.andnux.zbar.utils;
+package top.andnux.zbarui.utils;
 
 import android.annotation.SuppressLint;
 import android.content.ContentUris;

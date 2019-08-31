@@ -40,7 +40,7 @@ dependencies {
     implementation project(path: ':base')
     implementation project(path: ':http')
     implementation project(path: ':mvp')
-    implementation project(path: ':zbar')
+    implementation project(path: ':zbarui')
     implementation project(path: ':compat')
     implementation project(path: ':language')
     implementation project(path: ':utils')

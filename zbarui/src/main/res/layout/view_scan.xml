@@ -12,7 +12,7 @@
                 android:layout_height="@dimen/scan_frame_width"
                 android:layout_gravity="center_horizontal">
 
-                <top.andnux.zbar.view.CornerView
+                <top.andnux.zbarui.view.CornerView
                     android:id="@+id/cnv_left_top"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
@@ -20,7 +20,7 @@
                     app:corner_width="5dp" />
 
 
-                <top.andnux.zbar.view.CornerView
+                <top.andnux.zbarui.view.CornerView
                     android:id="@+id/cnv_left_bottom"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
@@ -28,7 +28,7 @@
                     app:corner_gravity="leftBottom"
                     app:corner_width="5dp" />
 
-                <top.andnux.zbar.view.CornerView
+                <top.andnux.zbarui.view.CornerView
                     android:id="@+id/cnv_right_top"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
@@ -37,7 +37,7 @@
                     app:corner_width="5dp" />
 
 
-                <top.andnux.zbar.view.CornerView
+                <top.andnux.zbarui.view.CornerView
                     android:id="@+id/cnv_right_bottom"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
@@ -46,7 +46,7 @@
                     app:corner_width="5dp" />
 
 
-                <top.andnux.zbar.view.LineView
+                <top.andnux.zbarui.view.LineView
                     android:id="@+id/iv_scan_line"
                     android:layout_width="match_parent"
                     android:layout_height="3dp"

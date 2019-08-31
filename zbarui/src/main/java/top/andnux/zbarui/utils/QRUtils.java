@@ -1,4 +1,4 @@
-package top.andnux.zbar.utils;
+package top.andnux.zbarui.utils;
 
 import android.content.Context;
 import android.content.res.Configuration;

@@ -1,4 +1,4 @@
-package top.andnux.zbar.view;
+package top.andnux.zbarui.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -10,9 +10,9 @@ import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 
-import top.andnux.zbar.Symbol;
-import top.andnux.zbar.ScanCodeConfig;
-import top.andnux.zbar.R;
+import top.andnux.zbarui.Symbol;
+import top.andnux.zbarui.ScanCodeConfig;
+import top.andnux.zbarui.R;
 
 /**
  * Created by Bert on 2017/9/20.

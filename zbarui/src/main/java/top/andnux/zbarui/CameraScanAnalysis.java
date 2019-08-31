@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package top.andnux.zbar;
+package top.andnux.zbarui;
 
 import android.content.Context;
 import android.hardware.Camera;
@@ -34,12 +34,12 @@ import com.google.zxing.datamatrix.detector.Detector;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import top.andnux.zbar.Config;
-import top.andnux.zbar.Image;
-import top.andnux.zbar.ImageScanner;
-import top.andnux.zbar.Symbol;
-import top.andnux.zbar.SymbolSet;
-import top.andnux.zbar.utils.QRUtils;
+import top.andnux.zbarui.Config;
+import top.andnux.zbarui.Image;
+import top.andnux.zbarui.ImageScanner;
+import top.andnux.zbarui.Symbol;
+import top.andnux.zbarui.SymbolSet;
+import top.andnux.zbarui.utils.QRUtils;
 
 
 /**

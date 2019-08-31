@@ -1,4 +1,4 @@
-package top.andnux.zbar.view;
+package top.andnux.zbarui.view;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -9,7 +9,7 @@ import android.graphics.Shader;
 import android.util.AttributeSet;
 import android.view.View;
 
-import top.andnux.zbar.R;
+import top.andnux.zbarui.R;
 
 import static android.R.attr.width;
 

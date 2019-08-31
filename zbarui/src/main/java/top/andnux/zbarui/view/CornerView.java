@@ -1,4 +1,4 @@
-package top.andnux.zbar.view;
+package top.andnux.zbarui.view;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -9,7 +9,7 @@ import android.view.View;
 
 import androidx.annotation.Nullable;
 
-import top.andnux.zbar.R;
+import top.andnux.zbarui.R;
 
 /**
  * Created by Bert on 2017/9/22.

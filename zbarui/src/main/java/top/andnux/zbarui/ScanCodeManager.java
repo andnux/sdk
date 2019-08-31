@@ -1,4 +1,4 @@
-package top.andnux.zbar;
+package top.andnux.zbarui;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -6,8 +6,8 @@ import android.widget.Toast;
 
 import java.util.List;
 
-import top.andnux.zbar.utils.PermissionConstants;
-import top.andnux.zbar.utils.PermissionUtils;
+import top.andnux.zbarui.utils.PermissionConstants;
+import top.andnux.zbarui.utils.PermissionUtils;
 
 /**
  * Created by Bert on 2017/9/22.

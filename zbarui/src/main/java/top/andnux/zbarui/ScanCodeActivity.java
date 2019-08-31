@@ -1,4 +1,4 @@
-package top.andnux.zbar;
+package top.andnux.zbarui;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -29,11 +29,11 @@ import com.soundcloud.android.crop.Crop;
 
 import java.io.File;
 
-import top.andnux.zbar.Symbol;
-import top.andnux.zbar.utils.GetPathFromUri;
-import top.andnux.zbar.utils.QRUtils;
-import top.andnux.zbar.view.ScanView;
-import top.andnux.zbar.view.VerticalSeekBar;
+import top.andnux.zbarui.Symbol;
+import top.andnux.zbarui.utils.GetPathFromUri;
+import top.andnux.zbarui.utils.QRUtils;
+import top.andnux.zbarui.view.ScanView;
+import top.andnux.zbarui.view.VerticalSeekBar;
 
 public class ScanCodeActivity extends Activity implements View.OnClickListener {
 
@@ -271,7 +271,7 @@ public class ScanCodeActivity extends Activity implements View.OnClickListener {
                     Toast.makeText(getApplicationContext(), getString(R.string.image_error), Toast.LENGTH_SHORT).show();
                     return;
                 }
-                //优先使用zbar识别一次二维码
+                //优先使用zbarui识别一次二维码
                 final String qrcontent = QRUtils.getInstance().decodeQRcode(imagePath);
                 runOnUiThread(() -> {
                     if (!TextUtils.isEmpty(qrcontent)) {

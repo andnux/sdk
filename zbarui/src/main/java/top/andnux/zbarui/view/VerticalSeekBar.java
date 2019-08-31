@@ -1,4 +1,4 @@
-package top.andnux.zbar.view;
+package top.andnux.zbarui.view;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -8,7 +8,7 @@ import android.view.MotionEvent;
 
 import androidx.appcompat.widget.AppCompatSeekBar;
 
-import top.andnux.zbar.R;
+import top.andnux.zbarui.R;
 
 
 /**

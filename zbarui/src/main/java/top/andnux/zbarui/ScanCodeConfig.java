@@ -1,4 +1,4 @@
-package top.andnux.zbar;
+package top.andnux.zbarui;
 
 import android.graphics.Color;
 
