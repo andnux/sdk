@@ -29,7 +29,7 @@ import com.soundcloud.android.crop.Crop;
 
 import java.io.File;
 
-import top.andnux.zbarui.Symbol;
+import top.andnux.zbar.Symbol;
 import top.andnux.zbarui.utils.GetPathFromUri;
 import top.andnux.zbarui.utils.QRUtils;
 import top.andnux.zbarui.view.ScanView;

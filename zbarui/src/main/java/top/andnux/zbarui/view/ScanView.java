@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 
-import top.andnux.zbarui.Symbol;
+import top.andnux.zbar.Symbol;
 import top.andnux.zbarui.ScanCodeConfig;
 import top.andnux.zbarui.R;
 
