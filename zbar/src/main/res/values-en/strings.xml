@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">zBarLibary</string>
+	<string name="ter_on">please wait...</string>
+	<string name="image_error">Failed to get the picture!</string>
+	<string name="recognition_failure">Identification failed!</string>
+	<string name="identifying_anomalies">Identify anomalies!</string>
+    <string name="scan_album">Album</string>
+	<string name="scan_code">Scan QR code</string>
+	<string name="scan_image">Select the image to be recognized</string>
+</resources>

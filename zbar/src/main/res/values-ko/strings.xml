@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">zBarLibary</string>
+	<string name="ter_on">잠시만 기다려주십시오 ...</string>
+	<string name="image_error">그림을 얻지 못했다!</string>
+	<string name="recognition_failure">식별에 실패했습니다!</string>
+	<string name="identifying_anomalies">이상 징후 식별!</string>
+	<string name="scan_album">앨범</string>
+	<string name="scan_code">QR 코드 스캔</string>
+	<string name="scan_image">식별 할 이미지를 선택하십시오.</string>
+</resources>

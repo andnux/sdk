@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">zBarLibary</string>
+	<string name="ter_on">请稍后...</string>
+	<string name="image_error">获取图片失败！</string>
+	<string name="recognition_failure">识别失败！</string>
+	<string name="identifying_anomalies">识别异常！</string>
+    <string name="scan_album">相册</string>
+	<string name="scan_code">扫描二维码</string>
+    <string name="scan_image">选择要识别的图片</string>
+</resources>
