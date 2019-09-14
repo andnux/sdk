@@ -1,16 +1,19 @@
 package top.andnux.http.cache;
 
 
+import android.content.Context;
+
 import java.util.HashMap;
 import java.util.Map;
 
 import top.andnux.http.utils.Utils;
 
-public class MemoryCache implements Cache {
+public class MemoryCache extends AbstractCache {
 
     private Map<String, CacheEntity> mCache;
 
-    public MemoryCache() {
+    public MemoryCache(Context context) {
+        super(context);
         mCache = new HashMap<>();
     }
 

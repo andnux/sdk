@@ -1,9 +1,17 @@
 package top.andnux.http.cache;
 
-public class DoubleCache implements Cache {
+import android.content.Context;
 
-    private Cache mMemCache = new MemoryCache();
-    private Cache mSQCache = new SQLiteCache();
+public class DoubleCache extends AbstractCache {
+
+    private Cache mMemCache;
+    private Cache mSQCache;
+
+    public DoubleCache(Context context) {
+        super(context);
+        mMemCache = new MemoryCache(context);
+        mSQCache = new SQLiteCache(context);
+    }
 
     @Override
     public void put(String url, String value, long time) {

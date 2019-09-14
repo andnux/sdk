@@ -1,14 +1,22 @@
 package top.andnux.http.cache;
 
+import android.content.Context;
+
 import java.util.List;
 
 import top.andnux.http.utils.Utils;
 import top.andnux.utils.sqlite.SQLiteDao;
-import top.andnux.utils.sqlite.SQLiteDaoFactory;
+import top.andnux.utils.sqlite.SQLiteManager;
 
-public class SQLiteCache implements Cache {
+public class SQLiteCache extends AbstractCache {
 
-    private SQLiteDao<CacheEntity> dao = SQLiteDaoFactory.getDao(CacheEntity.class);
+    private SQLiteDao<CacheEntity> dao;
+
+    public SQLiteCache(Context context) {
+        super(context);
+        SQLiteManager.init(context.getDatabasePath("cache.db"));
+        dao = SQLiteManager.getInstance().getDao(CacheEntity.class);
+    }
 
     @Override
     public void put(String url, String value, long time) {
@@ -30,9 +38,9 @@ public class SQLiteCache implements Cache {
         List<CacheEntity> query = dao.query(where);
         if (query.size() > 0) {
             CacheEntity entity = query.get(0);
-            if (entity.getDuration() < 0){
+            if (entity.getDuration() < 0) {
                 return Utils.decode(entity.getData());
-            }else {
+            } else {
                 long l = System.currentTimeMillis() - entity.getTime();
                 if (l - entity.getDuration() > 0) {
                     dao.delete(where);

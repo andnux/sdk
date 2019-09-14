@@ -1,13 +1,10 @@
 package top.andnux.utils.sqlite;
 
-import android.app.Application;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.ArrayMap;
-import android.util.Log;
 
-import java.io.File;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -15,38 +12,18 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-import top.andnux.utils.Utils;
-
 public class SQLiteDaoImpl<T> implements SQLiteDao<T> {
 
     private SQLiteDatabase mSqLiteDatabase;
     private Class<T> mClazz;
-    private String TAG = "SQLiteDaoImpl";
     private static final Object[] mPutMethodArgs = new Object[2];
     private static final Map<String, Method> mPutMethods
             = new ArrayMap<>();
 
-    @Override
-    public void init(Class<T> clazz) {
+    SQLiteDaoImpl(SQLiteDatabase database, Class<T> clazz) {
         this.mClazz = clazz;
-        Application application = Utils.getApp();
-        File dbFile = application.getDatabasePath("dao.db");
-        mSqLiteDatabase = SQLiteDatabase.openOrCreateDatabase(dbFile, null);
-        StringBuffer sb = new StringBuffer();
-        sb.append("create table if not exists ")
-                .append(SQLiteDaoUtil.getTableName(mClazz))
-                .append("(id integer primary key autoincrement, ");
-        Field[] fields = mClazz.getDeclaredFields();
-        for (Field field : fields) {
-            field.setAccessible(true);// 设置权限
-            String name = field.getName();
-            String type = field.getType().getSimpleName();
-            sb.append(name).append(SQLiteDaoUtil.getColumnType(type)).append(", ");
-        }
-        sb.replace(sb.length() - 2, sb.length(), ")");
-        String createTableSql = sb.toString();
-        Log.e(TAG, "表语句--> " + createTableSql);
-        mSqLiteDatabase.execSQL(createTableSql);
+        mSqLiteDatabase = database;
+        mSqLiteDatabase.execSQL(Utils.getCreateTable(clazz));
     }
 
 
@@ -54,7 +31,7 @@ public class SQLiteDaoImpl<T> implements SQLiteDao<T> {
     @Override
     public long insert(T obj) {
         ContentValues values = contentValuesByObj(obj);
-        return mSqLiteDatabase.insert(SQLiteDaoUtil.getTableName(mClazz),
+        return mSqLiteDatabase.insert(Utils.getTableName(mClazz),
                 null, values);
     }
 
@@ -84,7 +61,7 @@ public class SQLiteDaoImpl<T> implements SQLiteDao<T> {
     public List<T> query(T where) {
         ContentValues values = contentValuesByObj(where);
         SQLiteHandle whereHandle = new SQLiteHandle(where);
-        Cursor cursor = mSqLiteDatabase.query(SQLiteDaoUtil.getTableName(mClazz), null, whereHandle.getWhereClause(),
+        Cursor cursor = mSqLiteDatabase.query(Utils.getTableName(mClazz), null, whereHandle.getWhereClause(),
                 whereHandle.getWhereArgs(), null, null, null);
         return cursorToList(cursor);
     }
@@ -94,14 +71,14 @@ public class SQLiteDaoImpl<T> implements SQLiteDao<T> {
     public int update(T data, T where) {
         ContentValues values = contentValuesByObj(data);
         SQLiteHandle whereHandle = new SQLiteHandle(where);
-        return mSqLiteDatabase.update(SQLiteDaoUtil.getTableName(mClazz), values,
+        return mSqLiteDatabase.update(Utils.getTableName(mClazz), values,
                 whereHandle.getWhereClause(), whereHandle.getWhereArgs());
     }
 
     @Override
     public int delete(T where) {
         SQLiteHandle whereHandle = new SQLiteHandle(where);
-        return mSqLiteDatabase.delete(SQLiteDaoUtil.getTableName(mClazz), whereHandle.getWhereClause(),
+        return mSqLiteDatabase.delete(Utils.getTableName(mClazz), whereHandle.getWhereClause(),
                 whereHandle.getWhereArgs());
     }
 
@@ -113,7 +90,7 @@ public class SQLiteDaoImpl<T> implements SQLiteDao<T> {
             try {
                 // 设置权限，私有和共有都可以访问
                 field.setAccessible(true);
-                String key = field.getName();
+                String key = Utils.getFieldName(field);
                 // 获取value
                 Object value = field.get(obj);
                 if (value != null) {
@@ -143,7 +120,7 @@ public class SQLiteDaoImpl<T> implements SQLiteDao<T> {
      * 删除
      */
     public int delete(String whereClause, String[] whereArgs) {
-        return mSqLiteDatabase.delete(SQLiteDaoUtil.getTableName(mClazz), whereClause, whereArgs);
+        return mSqLiteDatabase.delete(Utils.getTableName(mClazz), whereClause, whereArgs);
     }
 
     /**
@@ -151,7 +128,7 @@ public class SQLiteDaoImpl<T> implements SQLiteDao<T> {
      */
     public int update(T obj, String whereClause, String... whereArgs) {
         ContentValues values = contentValuesByObj(obj);
-        return mSqLiteDatabase.update(SQLiteDaoUtil.getTableName(mClazz),
+        return mSqLiteDatabase.update(Utils.getTableName(mClazz),
                 values, whereClause, whereArgs);
     }
 
@@ -223,7 +200,7 @@ public class SQLiteDaoImpl<T> implements SQLiteDao<T> {
     private String getColumnMethodName(Class<?> fieldType) {
         String typeName;
         if (fieldType.isPrimitive()) {
-            typeName = SQLiteDaoUtil.capitalize(fieldType.getName());
+            typeName = Utils.capitalize(fieldType.getName());
         } else {
             typeName = fieldType.getSimpleName();
         }

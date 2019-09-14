@@ -18,7 +18,7 @@ public class HttpConfig {
     private long mConnectTimeout = 30 * 1000;
     private long mReadTimeout = 30 * 1000;
     private long mWriteTimeout = 30 * 1000;
-    private Cache mCache = new DoubleCache();
+    private Cache mCache;
     private CookieStorage mCookieStorage = new DoubleCookieStorage();
     private int mRetryCount = 3;
     private int mCacheDuration = 0;

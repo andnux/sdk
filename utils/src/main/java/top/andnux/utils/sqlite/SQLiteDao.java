@@ -4,8 +4,6 @@ import java.util.List;
 
 public interface SQLiteDao<T> {
 
-    void init(Class<T> clazz);
-
     // 插入数据
     long insert(T t);
 

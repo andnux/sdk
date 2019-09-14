@@ -67,7 +67,7 @@ public final class SQLiteMigration {
             String tempTableName = null;
             String tableName = entity.getClass().getName();
             if (!isTableExists(db, false, tableName)) {
-                printLog("【New Table】" + tableName);
+                printLog("【New Entity】" + tableName);
                 continue;
             }
             try {
@@ -76,7 +76,7 @@ public final class SQLiteMigration {
                 String insertTableStringBuilder = "CREATE TEMPORARY TABLE " + tempTableName +
                         " AS SELECT * FROM `" + tableName + "`;";
                 db.execSQL(insertTableStringBuilder);
-                printLog("【Table】" + tableName + "\n ---Columns-->" + getColumnsStr(entity[i]));
+                printLog("【Entity】" + tableName + "\n ---Columns-->" + getColumnsStr(entity[i]));
                 printLog("【Generate temp table】" + tempTableName);
             } catch (SQLException e) {
                 Log.e(TAG, "【Failed to generate temp table】" + tempTableName, e);

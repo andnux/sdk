@@ -69,14 +69,14 @@ public class SQLiteQuery<T> {
     }
 
     public List<T> query() {
-        Cursor cursor = mSQLiteDatabase.query(SQLiteDaoUtil.getTableName(mClass), mQueryColumns, mQuerySelection,
+        Cursor cursor = mSQLiteDatabase.query(Utils.getTableName(mClass), mQueryColumns, mQuerySelection,
                 mQuerySelectionArgs, mQueryGroupBy, mQueryHaving, mQueryOrderBy, mQueryLimit);
         clearQueryParams();
         return cursorToList(cursor);
     }
 
     public List<T> queryAll() {
-        Cursor cursor = mSQLiteDatabase.query(SQLiteDaoUtil.getTableName(mClass),
+        Cursor cursor = mSQLiteDatabase.query(Utils.getTableName(mClass),
                 null, null, null, null, null, null);
         return cursorToList(cursor);
     }
@@ -162,7 +162,7 @@ public class SQLiteQuery<T> {
     private String getColumnMethodName(Class<?> fieldType) {
         String typeName;
         if (fieldType.isPrimitive()) {
-            typeName = SQLiteDaoUtil.capitalize(fieldType.getName());
+            typeName = Utils.capitalize(fieldType.getName());
         } else {
             typeName = fieldType.getSimpleName();
         }

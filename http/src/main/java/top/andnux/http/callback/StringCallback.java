@@ -25,8 +25,10 @@ public abstract class StringCallback implements HttpCallback {
             final String s = Utils.inputStream2String(response.getInputStream());
             HttpConfig httpConfig = HttpManager.getInstance().getHttpConfig();
             Cache cache = httpConfig.getCache();
-            cache.put(Utils.md5(response.getRequest().getUrl()),
-                    s, httpConfig.getCacheDuration());
+            if (cache != null) {
+                cache.put(Utils.md5(response.getRequest().getUrl()),
+                        s, httpConfig.getCacheDuration());
+            }
             mHandler.post(() -> onSuccess(s));
         } catch (IOException e) {
             e.printStackTrace();
