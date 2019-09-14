@@ -2,7 +2,6 @@
 
 buildscript {
     repositories {
-        maven { url 'http://106.13.8.37:8081/nexus/content/repositories/android/' }
         maven { url 'https://jitpack.io' }
         jcenter()
         google()
@@ -10,13 +9,11 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:3.5.0'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
-//        classpath 'com.novoda:bintray-release:0.8.1'
     }
 }
 
 allprojects {
     repositories {
-        maven { url 'http://106.13.8.37:8081/nexus/content/repositories/android/' }
         maven { url 'https://jitpack.io' }
         jcenter()
         google()
