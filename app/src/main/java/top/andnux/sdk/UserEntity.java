@@ -4,8 +4,8 @@ import androidx.annotation.Keep;
 
 import java.io.Serializable;
 
-import top.andnux.utils.sqlite.annotation.Entity;
-import top.andnux.utils.sqlite.annotation.Property;
+import top.andnux.sqlite.annotation.Entity;
+import top.andnux.sqlite.annotation.Property;
 
 @Entity("tb_user")
 @Keep
@@ -14,8 +14,28 @@ public class UserEntity implements Serializable {
     private Integer id;
     @Property("name")
     private String name;
-    @Property("age")
-    private int age;
+    @Property(value = "age", check = "age > 0")
+    private Integer age;
+    @Property(value = "id_card", unique = true, notNull = true)
+    private String idCard;
+    @Property(value = "sex", defaultValue = "1")
+    private Integer sex;
+
+    public String getIdCard() {
+        return idCard;
+    }
+
+    public void setIdCard(String idCard) {
+        this.idCard = idCard;
+    }
+
+    public int getSex() {
+        return sex;
+    }
+
+    public void setSex(int sex) {
+        this.sex = sex;
+    }
 
     public Integer getId() {
         return id;
@@ -39,5 +59,16 @@ public class UserEntity implements Serializable {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return "UserEntity{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", idCard='" + idCard + '\'' +
+                ", sex=" + sex +
+                '}';
     }
 }
