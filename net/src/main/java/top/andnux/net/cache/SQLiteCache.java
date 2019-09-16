@@ -5,6 +5,7 @@ import android.content.Context;
 import java.util.List;
 
 import top.andnux.net.utils.Utils;
+import top.andnux.sqlite.QueryWhere;
 import top.andnux.sqlite.SQLiteDao;
 import top.andnux.sqlite.SQLiteManager;
 
@@ -25,16 +26,16 @@ public class SQLiteCache extends AbstractCache {
         entity.setDuration(time);
         entity.setData(Utils.encode(value));
         entity.setUrl(Utils.md5(url));
-        CacheEntity where = new CacheEntity();
-        where.setUrl(Utils.md5(url));
+        QueryWhere where = new QueryWhere(CacheEntity.class);
+        where.and("url").equal(Utils.md5(url));
         dao.delete(where);
         dao.insert(entity);
     }
 
     @Override
     public String get(String url) {
-        CacheEntity where = new CacheEntity();
-        where.setUrl(Utils.md5(url));
+        QueryWhere where = new QueryWhere(CacheEntity.class);
+        where.and("url").equal(Utils.md5(url));
         List<CacheEntity> query = dao.query(where);
         if (query.size() > 0) {
             CacheEntity entity = query.get(0);
@@ -54,14 +55,14 @@ public class SQLiteCache extends AbstractCache {
 
     @Override
     public void remove(String url) {
-        CacheEntity where = new CacheEntity();
-        where.setUrl(Utils.md5(url));
+        QueryWhere where = new QueryWhere(CacheEntity.class);
+        where.and("url").equal(Utils.md5(url));
         dao.delete(where);
     }
 
     @Override
     public void clear() {
-        CacheEntity where = new CacheEntity();
+        QueryWhere where = new QueryWhere(CacheEntity.class);
         dao.delete(where);
     }
 }

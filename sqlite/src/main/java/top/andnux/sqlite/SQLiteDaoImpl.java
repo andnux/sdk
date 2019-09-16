@@ -3,6 +3,7 @@ package top.andnux.sqlite;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.text.TextUtils;
 import android.util.ArrayMap;
 
 import java.lang.reflect.Field;
@@ -12,10 +13,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-import top.andnux.sqlite.SQLiteDao;
-import top.andnux.sqlite.SQLiteHandle;
-import top.andnux.sqlite.SQLiteQuery;
-import top.andnux.sqlite.utils.Utils;
+import top.andnux.sqlite.annotation.Property;
 
 public class SQLiteDaoImpl<T> implements SQLiteDao<T> {
 
@@ -28,7 +26,16 @@ public class SQLiteDaoImpl<T> implements SQLiteDao<T> {
     SQLiteDaoImpl(SQLiteDatabase database, Class<T> clazz) {
         this.mClazz = clazz;
         mSqLiteDatabase = database;
-        mSqLiteDatabase.execSQL(Utils.getCreateTable(clazz));
+        //创建表
+        String table = Support.createTable(clazz, true);
+        if (!TextUtils.isEmpty(table)) {
+            mSqLiteDatabase.execSQL(table);
+        }
+        //创建触发器
+        String trigger = Support.createTrigger(clazz);
+        if (!TextUtils.isEmpty(trigger)) {
+            mSqLiteDatabase.execSQL(trigger);
+        }
     }
 
 
@@ -36,7 +43,7 @@ public class SQLiteDaoImpl<T> implements SQLiteDao<T> {
     @Override
     public long insert(T obj) {
         ContentValues values = contentValuesByObj(obj);
-        return mSqLiteDatabase.insert(Utils.getTableName(mClazz),
+        return mSqLiteDatabase.insert(Support.getTableName(mClazz),
                 null, values);
     }
 
@@ -63,28 +70,21 @@ public class SQLiteDaoImpl<T> implements SQLiteDao<T> {
     }
 
     @Override
-    public List<T> query(T where) {
-        ContentValues values = contentValuesByObj(where);
-        SQLiteHandle whereHandle = new SQLiteHandle(where);
-        Cursor cursor = mSqLiteDatabase.query(Utils.getTableName(mClazz), null, whereHandle.getWhereClause(),
-                whereHandle.getWhereArgs(), null, null, null);
+    public List<T> query(QueryWhere where) {
+        Cursor cursor = mSqLiteDatabase.rawQuery(where.toString(), null);
         return cursorToList(cursor);
     }
 
-
     @Override
-    public int update(T data, T where) {
+    public int update(T data, QueryWhere where) {
         ContentValues values = contentValuesByObj(data);
-        SQLiteHandle whereHandle = new SQLiteHandle(where);
-        return mSqLiteDatabase.update(Utils.getTableName(mClazz), values,
-                whereHandle.getWhereClause(), whereHandle.getWhereArgs());
+        return mSqLiteDatabase.update(Support.getTableName(mClazz), values,
+                where.toString(), null);
     }
 
     @Override
-    public int delete(T where) {
-        SQLiteHandle whereHandle = new SQLiteHandle(where);
-        return mSqLiteDatabase.delete(Utils.getTableName(mClazz), whereHandle.getWhereClause(),
-                whereHandle.getWhereArgs());
+    public int delete(QueryWhere where) {
+        return mSqLiteDatabase.delete(Support.getTableName(mClazz), where.toString(), null);
     }
 
     // obj 转成 ContentValues
@@ -93,9 +93,12 @@ public class SQLiteDaoImpl<T> implements SQLiteDao<T> {
         Field[] fields = mClazz.getDeclaredFields();
         for (Field field : fields) {
             try {
+                if (field.getAnnotation(Property.class) == null) {
+                    continue;
+                }
                 // 设置权限，私有和共有都可以访问
                 field.setAccessible(true);
-                String key = Utils.getFieldName(field);
+                String key = Support.getFieldName(field);
                 // 获取value
                 Object value = field.get(obj);
                 if (value != null) {
@@ -125,7 +128,7 @@ public class SQLiteDaoImpl<T> implements SQLiteDao<T> {
      * 删除
      */
     public int delete(String whereClause, String[] whereArgs) {
-        return mSqLiteDatabase.delete(Utils.getTableName(mClazz), whereClause, whereArgs);
+        return mSqLiteDatabase.delete(Support.getTableName(mClazz), whereClause, whereArgs);
     }
 
     /**
@@ -133,7 +136,7 @@ public class SQLiteDaoImpl<T> implements SQLiteDao<T> {
      */
     public int update(T obj, String whereClause, String... whereArgs) {
         ContentValues values = contentValuesByObj(obj);
-        return mSqLiteDatabase.update(Utils.getTableName(mClazz),
+        return mSqLiteDatabase.update(Support.getTableName(mClazz),
                 values, whereClause, whereArgs);
     }
 
@@ -152,9 +155,13 @@ public class SQLiteDaoImpl<T> implements SQLiteDao<T> {
                     for (Field field : fields) {
                         // 遍历属性
                         field.setAccessible(true);
-                        String name = Utils.getFieldName(field);
+                        String name = Support.getFieldName(field);
                         // 获取角标
                         int index = cursor.getColumnIndex(name);
+                        if (index == -1) { //支持可选列名
+                            name = Support.getFieldNameOptional(field);
+                            index = cursor.getColumnIndex(name);
+                        }
                         if (index == -1) {
                             continue;
                         }
@@ -205,7 +212,7 @@ public class SQLiteDaoImpl<T> implements SQLiteDao<T> {
     private String getColumnMethodName(Class<?> fieldType) {
         String typeName;
         if (fieldType.isPrimitive()) {
-            typeName = Utils.capitalize(fieldType.getName());
+            typeName = Support.capitalize(fieldType.getName());
         } else {
             typeName = fieldType.getSimpleName();
         }

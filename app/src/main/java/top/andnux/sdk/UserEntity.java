@@ -7,10 +7,12 @@ import java.io.Serializable;
 import top.andnux.sqlite.annotation.Entity;
 import top.andnux.sqlite.annotation.Property;
 
-@Entity("tb_user")
 @Keep
+@Entity("tb_user")
 public class UserEntity implements Serializable {
-    @Property(value = "_id", autoincrement = true, primaryKey = true)
+
+    @Property(value = "id", optional = "_id",
+            autoincrement = true, primaryKey = true)
     private Integer id;
     @Property("name")
     private String name;
@@ -18,7 +20,7 @@ public class UserEntity implements Serializable {
     private Integer age;
     @Property(value = "id_card", unique = true, notNull = true)
     private String idCard;
-    @Property(value = "sex", defaultValue = "1")
+    @Property(value = "sex", defaultValue = "0")
     private Integer sex;
 
     public String getIdCard() {

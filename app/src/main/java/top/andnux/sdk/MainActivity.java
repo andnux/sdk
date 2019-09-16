@@ -8,9 +8,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import java.util.List;
+import java.util.Random;
 import java.util.UUID;
 
 import top.andnux.compat.ToastCompat;
+import top.andnux.sqlite.OrderBy;
+import top.andnux.sqlite.QueryWhere;
 import top.andnux.sqlite.SQLiteDao;
 import top.andnux.sqlite.SQLiteManager;
 import top.andnux.zbarui.ScanCodeConfig;
@@ -26,14 +29,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         SQLiteManager.init(getDatabasePath("sdk.db"));
         SQLiteDao<UserEntity> dao = SQLiteManager.getInstance().getDao(UserEntity.class);
         UserEntity t = new UserEntity();
-        t.setAge(18);
+        t.setAge(new Random().nextInt(100));
         t.setName("张春林");
-        t.setIdCard(UUID.randomUUID().toString().replace("-",""));
+        t.setIdCard(UUID.randomUUID().toString().replace("-", ""));
         dao.insert(t);
-
-        List<UserEntity> query = dao.query(new UserEntity());
+        QueryWhere where = new QueryWhere(UserEntity.class);
+        List<UserEntity> query = dao.query(where);
         for (UserEntity entity : query) {
-            Log.e("TAG",entity.toString());
+            Log.e("TAG", entity.toString());
         }
     }
 

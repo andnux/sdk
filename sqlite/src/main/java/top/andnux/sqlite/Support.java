@@ -1,4 +1,4 @@
-package top.andnux.sqlite.utils;
+package top.andnux.sqlite;
 
 import android.text.TextUtils;
 import android.util.Log;
@@ -9,31 +9,64 @@ import java.util.Locale;
 
 import top.andnux.sqlite.annotation.Entity;
 import top.andnux.sqlite.annotation.Property;
+import top.andnux.sqlite.annotation.Trigger;
 
-public class Utils {
+public class Support {
 
-    public static String getCreateTable(Class<?> clazz) {
+    public static String createTable(Class<?> clazz, boolean ifNotExits) {
         StringBuilder sb = new StringBuilder();
-        sb.append("create table if not exists ")
+        String ifNotExitsSql = ifNotExits ? "if not exists " : "";
+        sb.append("create table ").append(ifNotExitsSql)
                 .append(getTableName(clazz))
                 .append("( ");
         Field[] fields = clazz.getDeclaredFields();
         for (Field field : fields) {
             field.setAccessible(true);// 设置权限
             String type = field.getType().getSimpleName();
-            sb.append(getFieldName(field))
-                    .append(getColumnType(type))
-                    .append(getPrimaryKey(field))
-                    .append(getNotNull(field))
-                    .append(getUnique(field))
-                    .append(getCheck(field))
-                    .append(getDefaultValue(field))
-                    .append(getAutoincrement(field))
-                    .append(", ");
+            String fieldName = getFieldName(field);
+            if (!TextUtils.isEmpty(fieldName)) {
+                sb.append(fieldName)
+                        .append(getColumnType(type))
+                        .append(getPrimaryKey(field))
+                        .append(getNotNull(field))
+                        .append(getUnique(field))
+                        .append(getCheck(field))
+                        .append(getDefaultValue(field))
+                        .append(getAutoincrement(field))
+                        .append(", ");
+            }
+
         }
         sb.replace(sb.length() - 2, sb.length(), ")");
         String createTableSql = sb.toString();
         Log.e("SQL", "表语句--> " + createTableSql);
+        return sb.toString();
+    }
+
+    public static String createTrigger(Class<?> clazz) {
+        StringBuilder sb = new StringBuilder();
+        String name = clazz.getSimpleName();
+        Trigger trigger = clazz.getAnnotation(Trigger.class);
+        if (trigger == null) {
+            return "";
+        }
+        if (!TextUtils.isEmpty(trigger.value())) {
+            name = trigger.value();
+        }
+        if (TextUtils.isEmpty(name)) {
+            return "";
+        }
+        sb.append("create trigger ").append(name)
+                .append(" ")
+                .append(trigger.type().name())
+                .append(" ")
+                .append(trigger.event().name())
+                .append(" on ")
+                .append(trigger.on())
+                .append(" begin ")
+                .append(trigger.body())
+                .append(" end ");
+        Log.e("SQL", "触发器--> " + sb.toString());
         return sb.toString();
     }
 
@@ -93,16 +126,33 @@ public class Utils {
     }
 
     public static String getFieldName(Field field) {
-        String name = field.getName();
+        String name = "";
         Property annotation = field.getAnnotation(Property.class);
         if (annotation != null) {
             String value = annotation.value();
             if (!TextUtils.isEmpty(value)) {
                 name = value;
+            } else {
+                name = field.getName();
             }
         }
         return name;
     }
+
+    public static String getFieldNameOptional(Field field) {
+        String name = "";
+        Property annotation = field.getAnnotation(Property.class);
+        if (annotation != null) {
+            String value = annotation.optional();
+            if (!TextUtils.isEmpty(value)) {
+                name = value;
+            } else {
+                name = field.getName();
+            }
+        }
+        return name;
+    }
+
 
 
     public static String getTableName(Class<?> clazz) {

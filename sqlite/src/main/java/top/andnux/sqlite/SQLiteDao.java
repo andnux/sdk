@@ -13,14 +13,15 @@ public interface SQLiteDao<T> {
     // 获取专门查询的支持类
     SQLiteQuery<T> querySupport();
 
-    List<T> query(T where);
+    List<T> query(QueryWhere where);
 
-    int update(T data, T where);
-
-    int delete(T where);
-
-    // 按照语句查询
+    //删除
     int delete(String whereClause, String... whereArgs);
+
+    int delete(QueryWhere where);
+
+    //更新
+    int update(T data, QueryWhere where);
 
     int update(T obj, String whereClause, String... whereArgs);
 }

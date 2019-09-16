@@ -9,8 +9,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import top.andnux.sqlite.utils.Utils;
-
 public class SQLiteQuery<T> {
     // 查询的列
     private String[] mQueryColumns;
@@ -71,14 +69,14 @@ public class SQLiteQuery<T> {
     }
 
     public List<T> query() {
-        Cursor cursor = mSQLiteDatabase.query(Utils.getTableName(mClass), mQueryColumns, mQuerySelection,
+        Cursor cursor = mSQLiteDatabase.query(Support.getTableName(mClass), mQueryColumns, mQuerySelection,
                 mQuerySelectionArgs, mQueryGroupBy, mQueryHaving, mQueryOrderBy, mQueryLimit);
         clearQueryParams();
         return cursorToList(cursor);
     }
 
     public List<T> queryAll() {
-        Cursor cursor = mSQLiteDatabase.query(Utils.getTableName(mClass),
+        Cursor cursor = mSQLiteDatabase.query(Support.getTableName(mClass),
                 null, null, null, null, null, null);
         return cursorToList(cursor);
     }
@@ -164,7 +162,7 @@ public class SQLiteQuery<T> {
     private String getColumnMethodName(Class<?> fieldType) {
         String typeName;
         if (fieldType.isPrimitive()) {
-            typeName = Utils.capitalize(fieldType.getName());
+            typeName = Support.capitalize(fieldType.getName());
         } else {
             typeName = fieldType.getSimpleName();
         }
