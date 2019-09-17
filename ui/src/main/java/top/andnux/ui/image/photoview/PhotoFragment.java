@@ -37,7 +37,9 @@ public class PhotoFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        url = getArguments().getString("url");
+        if (getArguments() != null) {
+            url = getArguments().getString("url");
+        }
     }
 
     @Nullable
