@@ -31,7 +31,7 @@ android {
 dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
     api 'pub.devrel:easypermissions:3.0.0'
-    api 'org.aspectj:aspectjrt:1.9.1'
+    api 'org.aspectj:aspectjrt:1.9.4'
     api 'androidx.appcompat:appcompat:1.0.2'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'

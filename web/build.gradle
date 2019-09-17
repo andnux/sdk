@@ -27,7 +27,6 @@ dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
     api 'androidx.appcompat:appcompat:1.0.2'
     api project(path: ':ui')
-    api project(path: ':compat')
     api project(path: ':utils')
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'

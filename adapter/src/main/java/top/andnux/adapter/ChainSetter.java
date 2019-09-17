@@ -38,8 +38,6 @@ interface ChainSetter<VH> {
 
     VH setImageUri(int viewId, Uri imageUri);
 
-    VH setImageUrl(int viewId, String url);
-
     VH setImageUrlWithLoader(int viewId, String url, ImageLoader loader);
 
     VH setScaleType(int viewId, ImageView.ScaleType type);

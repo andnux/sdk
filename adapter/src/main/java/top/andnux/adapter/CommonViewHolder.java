@@ -24,8 +24,6 @@ import androidx.annotation.FloatRange;
 import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
-
 /**
  * Universal view holder.
  * <p>
@@ -149,20 +147,10 @@ public class CommonViewHolder extends RecyclerView.ViewHolder implements ChainSe
     }
 
     @Override
-    public CommonViewHolder setImageUrl(int viewId, String url) {
-        ImageView view = findViewById(viewId);
-        ImageLoader loader = (imageView, url1) -> {
-            Glide.with(imageView.getContext()).load(url1).into(imageView);
-        };
-        loader.loadImage(view, url);
-        return null;
-    }
-
-    @Override
     public CommonViewHolder setImageUrlWithLoader(int viewId, String url, ImageLoader loader) {
         ImageView view = findViewById(viewId);
         loader.loadImage(view, url);
-        return null;
+        return this;
     }
 
     @Override

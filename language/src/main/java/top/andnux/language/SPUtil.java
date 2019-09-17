@@ -3,9 +3,9 @@ package top.andnux.language;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.alibaba.fastjson.JSON;
-
 import java.util.Locale;
+
+import top.andnux.json.JsonAdapterManager;
 
 public class SPUtil {
 
@@ -24,7 +24,7 @@ public class SPUtil {
 
     public void saveLanguage(LanguageBean bean) {
         SharedPreferences.Editor edit = mSharedPreferences.edit();
-        String jsonString = JSON.toJSONString(bean);
+        String jsonString = JsonAdapterManager.getInstance().toJSONString(bean);
         edit.putString(TAG_LANGUAGE, jsonString);
         edit.apply();
     }
@@ -33,7 +33,7 @@ public class SPUtil {
         String jsonString = mSharedPreferences.getString(TAG_LANGUAGE, "");
         LanguageBean languageBean = new LanguageBean("auto", "跟随系统", getSystemCurrentLocal());
         try {
-            LanguageBean tmp = JSON.parseObject(jsonString, LanguageBean.class);
+            LanguageBean tmp = JsonAdapterManager.getInstance().parseObject(jsonString, LanguageBean.class);
             if (tmp == null || "auto".equalsIgnoreCase(tmp.getCode())) {
                 //第一次安装
                 return languageBean;
