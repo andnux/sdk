@@ -69,6 +69,7 @@ public class PhotoActivity extends AppCompatActivity implements ViewPager.OnPage
 
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onPageSelected(int position) {
         if (mUrls.size() > 0) {
