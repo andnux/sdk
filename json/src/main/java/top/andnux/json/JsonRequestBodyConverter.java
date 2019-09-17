@@ -14,28 +14,29 @@ package top.andnux.json;/*
  * limitations under the License.
  */
 
-import com.alibaba.fastjson.JSON;
-import okhttp3.MediaType;
-import okhttp3.RequestBody;
-import retrofit2.Converter;
-
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.nio.charset.Charset;
+
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
+import retrofit2.Converter;
 
 final class JsonRequestBodyConverter<T> implements Converter<T, RequestBody> {
 
     private static final MediaType MEDIA_TYPE = MediaType.get("application/json; charset=UTF-8");
     private static final Charset UTF_8 = Charset.forName("UTF-8");
+    private JsonAdapter mJsonAdapter;
     private Type mType;
 
-    public JsonRequestBodyConverter(Type mType) {
+    public JsonRequestBodyConverter(JsonAdapter jsonAdapter, Type mType) {
+        this.mJsonAdapter = jsonAdapter;
         this.mType = mType;
     }
 
     @Override
     public RequestBody convert(T value) throws IOException {
-        String json = JSON.toJSONString(value);
+        String json = mJsonAdapter.toJSONString(value);
         return RequestBody.create(MEDIA_TYPE, json.getBytes(UTF_8));
     }
 }

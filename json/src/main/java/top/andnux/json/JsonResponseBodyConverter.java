@@ -14,24 +14,25 @@ package top.andnux.json;/*
  * limitations under the License.
  */
 
-import com.alibaba.fastjson.JSON;
-import okhttp3.ResponseBody;
-import retrofit2.Converter;
-
 import java.io.IOException;
 import java.lang.reflect.Type;
 
+import okhttp3.ResponseBody;
+import retrofit2.Converter;
+
 final class JsonResponseBodyConverter<T> implements Converter<ResponseBody, T> {
 
-  private Type mType;
+    private Type mType;
+    private JsonAdapter mJsonAdapter;
 
-  public JsonResponseBodyConverter(Type mType) {
-    this.mType = mType;
-  }
+    public JsonResponseBodyConverter(JsonAdapter jsonAdapter, Type mType) {
+        this.mJsonAdapter = jsonAdapter;
+        this.mType = mType;
+    }
 
-  @Override
-  public T convert(ResponseBody value) throws IOException {
-    String json = value.string();
-    return JSON.parseObject(json, mType);
-  }
+    @Override
+    public T convert(ResponseBody value) throws IOException {
+        String json = value.string();
+        return mJsonAdapter.parseObject(json, mType);
+    }
 }

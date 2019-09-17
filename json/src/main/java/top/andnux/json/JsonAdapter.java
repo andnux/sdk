@@ -3,7 +3,7 @@ package top.andnux.json;
 import java.lang.reflect.Type;
 import java.util.List;
 
-public interface JsonConverter {
+public interface JsonAdapter {
 
     /**
      * 转换对接为json
@@ -11,7 +11,7 @@ public interface JsonConverter {
      * @param o
      * @return
      */
-    String toString(Object o);
+    String toJSONString(Object o);
 
     /**
      * 解析json队长

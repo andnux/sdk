@@ -10,15 +10,26 @@ import retrofit2.Retrofit;
 
 public final class JsonConverterFactory extends Converter.Factory {
 
+    private JsonAdapter mJsonAdapter;
+
+    public JsonConverterFactory(JsonAdapter jsonAdapter) {
+        mJsonAdapter = jsonAdapter;
+    }
+
+    public static JsonConverterFactory create(JsonAdapter converter) {
+        return new JsonConverterFactory(converter);
+    }
+
+
     public static JsonConverterFactory create() {
-        return new JsonConverterFactory();
+        return new JsonConverterFactory(new FastJsonAdapter());
     }
 
     @Override
     public Converter<ResponseBody, ?> responseBodyConverter(Type type,
                                                             Annotation[] annotations,
                                                             Retrofit retrofit) {
-        return new JsonResponseBodyConverter<>(type);
+        return new JsonResponseBodyConverter<>(mJsonAdapter,type);
     }
 
     @Override
@@ -26,6 +37,6 @@ public final class JsonConverterFactory extends Converter.Factory {
                                                           Annotation[] parameterAnnotations,
                                                           Annotation[] methodAnnotations,
                                                           Retrofit retrofit) {
-        return new JsonResponseBodyConverter<>(type);
+        return new JsonResponseBodyConverter<>(mJsonAdapter,type);
     }
 }

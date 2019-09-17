@@ -16,6 +16,7 @@ import top.andnux.sqlite.OrderBy;
 import top.andnux.sqlite.QueryWhere;
 import top.andnux.sqlite.SQLiteDao;
 import top.andnux.sqlite.SQLiteManager;
+import top.andnux.sqlite.http.SQLiteHttpHelper;
 import top.andnux.zbarui.ScanCodeConfig;
 import top.andnux.zbarui.ScanCodeManager;
 
@@ -38,6 +39,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         for (UserEntity entity : query) {
             Log.e("TAG", entity.toString());
         }
+        SQLiteHttpHelper.init(getApplication(),BuildConfig.DEBUG,
+                getDatabasePath("sdk.db"));
     }
 
     public void onClick(View view) {
