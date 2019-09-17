@@ -1,1 +1,1 @@
-include ':app', ':net', ':adapter', ':mvp', ':compat', ':mvvm', ':ui', ':utils', ':base', ':language', ':web', ':skin', ':pay', ':zbarui', ':json', ':sqlite'
+include ':app', ':net', ':adapter', ':mvp', ':compat', ':mvvm', ':ui', ':utils', ':base', ':language', ':web', ':skin', ':pay', ':zbarui', ':json', ':sqlite', ':image'

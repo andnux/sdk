@@ -1,4 +1,4 @@
-package top.andnux.ui.image.photoview;
+package top.andnux.image;
 
 import android.widget.ImageView;
 
