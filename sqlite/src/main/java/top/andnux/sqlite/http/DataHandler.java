@@ -16,7 +16,7 @@ public class DataHandler implements HttpHandler {
 
     @Override
     public NanoHTTPD.Response handler(NanoHTTPD.IHTTPSession session) {
-        String table = session.getParms().get("table");
+        String table = session.getParms().get("name");
         SQLiteHttpHelper instance = SQLiteHttpHelper.getInstance();
         try {
             if (!TextUtils.isEmpty(table)) {

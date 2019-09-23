@@ -11,12 +11,12 @@ import fi.iki.elonen.NanoHTTPD;
 public class TableHandler implements HttpHandler {
     @Override
     public boolean canHandler(String url) {
-        return url.contains("tables");
+        return url.contains("table");
     }
 
     @Override
     public NanoHTTPD.Response handler(NanoHTTPD.IHTTPSession session) {
-        String table = session.getParms().get("table");
+        String table = session.getParms().get("name");
         SQLiteHttpHelper instance = SQLiteHttpHelper.getInstance();
         try {
             if (TextUtils.isEmpty(table)) {
