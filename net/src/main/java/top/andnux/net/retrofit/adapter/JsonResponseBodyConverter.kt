@@ -1,4 +1,6 @@
-package top.andnux.json;/*
+package top.andnux.net.retrofit.adapter
+
+/*
  * Copyright (C) 2015 Square, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,25 +16,18 @@ package top.andnux.json;/*
  * limitations under the License.
  */
 
-import java.io.IOException;
-import java.lang.reflect.Type;
+import java.io.IOException
+import java.lang.reflect.Type
 
-import okhttp3.ResponseBody;
-import retrofit2.Converter;
+import okhttp3.ResponseBody
+import retrofit2.Converter
+import top.andnux.json.JsonProxy
 
-final class JsonResponseBodyConverter<T> implements Converter<ResponseBody, T> {
+internal class JsonResponseBodyConverter<T>(private val mJsonAdapter: JsonProxy, private val mType: Type) : Converter<ResponseBody, T> {
 
-    private Type mType;
-    private JsonAdapter mJsonAdapter;
-
-    public JsonResponseBodyConverter(JsonAdapter jsonAdapter, Type mType) {
-        this.mJsonAdapter = jsonAdapter;
-        this.mType = mType;
-    }
-
-    @Override
-    public T convert(ResponseBody value) throws IOException {
-        String json = value.string();
-        return mJsonAdapter.parseObject(json, mType);
+    @Throws(IOException::class)
+    override fun convert(value: ResponseBody): T? {
+        val json = value.string()
+        return mJsonAdapter.parseObject<T>(json, mType)
     }
 }

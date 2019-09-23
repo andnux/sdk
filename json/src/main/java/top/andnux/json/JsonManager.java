@@ -3,25 +3,25 @@ package top.andnux.json;
 import java.lang.reflect.Type;
 import java.util.List;
 
-public class JsonAdapterManager {
+public class JsonManager {
 
-    private static final JsonAdapterManager ourInstance = new JsonAdapterManager();
+    private static final JsonManager ourInstance = new JsonManager();
 
-    public static JsonAdapterManager getInstance() {
+    public static JsonManager getInstance() {
         return ourInstance;
     }
 
-    private JsonAdapter mJsonAdapter = new FastJsonAdapter();
+    private JsonProxy mJsonAdapter = new FastJsonProxy();
 
-    private JsonAdapterManager() {
+    private JsonManager() {
 
     }
 
-    public void setJsonAdapter(JsonAdapter jsonAdapter) {
+    public void setJsonAdapter(JsonProxy jsonAdapter) {
         mJsonAdapter = jsonAdapter;
     }
 
-    public JsonAdapter getJsonAdapter() {
+    public JsonProxy getJsonAdapter() {
         return mJsonAdapter;
     }
 
@@ -32,12 +32,12 @@ public class JsonAdapterManager {
      * @return
      */
     public String toJSONString(Object o) {
-        if (mJsonAdapter == null) mJsonAdapter = new FastJsonAdapter();
+        if (mJsonAdapter == null) mJsonAdapter = new FastJsonProxy();
         return mJsonAdapter.toJSONString(o);
     }
 
     /**
-     * 解析json队长
+     * 解析json对象
      *
      * @param json
      * @param clazz
@@ -45,7 +45,7 @@ public class JsonAdapterManager {
      * @return
      */
     public <T> T parseObject(String json, Class<T> clazz) {
-        if (mJsonAdapter == null) mJsonAdapter = new FastJsonAdapter();
+        if (mJsonAdapter == null) mJsonAdapter = new FastJsonProxy();
         return mJsonAdapter.parseObject(json, clazz);
     }
 
@@ -58,7 +58,7 @@ public class JsonAdapterManager {
      * @return
      */
     public <T> T parseObject(String json, Type type) {
-        if (mJsonAdapter == null) mJsonAdapter = new FastJsonAdapter();
+        if (mJsonAdapter == null) mJsonAdapter = new FastJsonProxy();
         return mJsonAdapter.parseObject(json, type);
     }
 
@@ -71,7 +71,7 @@ public class JsonAdapterManager {
      * @return
      */
     public <T> List<T> parseArray(String json, Class<T> clazz) {
-        if (mJsonAdapter == null) mJsonAdapter = new FastJsonAdapter();
+        if (mJsonAdapter == null) mJsonAdapter = new FastJsonProxy();
         return mJsonAdapter.parseArray(json, clazz);
     }
 
@@ -84,7 +84,7 @@ public class JsonAdapterManager {
      * @return
      */
     public <T> List<T> parseArray(String json, Type type) {
-        if (mJsonAdapter == null) mJsonAdapter = new FastJsonAdapter();
+        if (mJsonAdapter == null) mJsonAdapter = new FastJsonProxy();
         return mJsonAdapter.parseArray(json, type);
     }
 }

@@ -3,7 +3,7 @@ package top.andnux.json;
 import java.lang.reflect.Type;
 import java.util.List;
 
-public interface JsonAdapter {
+public interface JsonProxy {
 
     /**
      * 转换对接为json

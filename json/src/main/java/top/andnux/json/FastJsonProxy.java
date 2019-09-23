@@ -1,39 +1,33 @@
 package top.andnux.json;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
+import com.alibaba.fastjson.JSON;
 
 import java.lang.reflect.Type;
 import java.util.List;
 
-public class GoogleJsonAdapter implements JsonAdapter {
-
-    private Gson mGson = new Gson();
-
+public class FastJsonProxy implements JsonProxy {
     @Override
     public String toJSONString(Object o) {
-        return mGson.toJson(o);
+        return JSON.toJSONString(o);
     }
 
     @Override
     public <T> T parseObject(String json, Class<T> clazz) {
-        return mGson.fromJson(json, clazz);
+        return JSON.parseObject(json, clazz);
     }
 
     @Override
     public <T> T parseObject(String json, Type type) {
-        return mGson.fromJson(json, type);
+        return JSON.parseObject(json, type);
     }
 
     @Override
     public <T> List<T> parseArray(String json, Class<T> clazz) {
-        return mGson.fromJson(json, new TypeToken<List<T>>() {
-        }.getType());
+        return JSON.parseArray(json, clazz);
     }
-
     @Override
+    @SuppressWarnings("all")
     public <T> List<T> parseArray(String json, Type type) {
-        return mGson.fromJson(json, new TypeToken<List<T>>() {
-        }.getType());
+        return (List<T>) JSON.parseArray(json, new Type[]{type});
     }
 }

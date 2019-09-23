@@ -1,7 +1,7 @@
 package top.andnux.sqlite.http;
 
 import fi.iki.elonen.NanoHTTPD;
-import top.andnux.json.JsonAdapterManager;
+import top.andnux.json.JsonManager;
 
 public class ResponseHelper {
 
@@ -12,7 +12,7 @@ public class ResponseHelper {
         responseBean.setMsg("成功");
         NanoHTTPD.Response response = NanoHTTPD.newFixedLengthResponse(
                 NanoHTTPD.Response.Status.OK, "text/json",
-                JsonAdapterManager.getInstance().toJSONString(responseBean));
+                JsonManager.getInstance().toJSONString(responseBean));
         response.addHeader("Content-Type", "application/json;charset=UTF-8");
         return response;
     }
