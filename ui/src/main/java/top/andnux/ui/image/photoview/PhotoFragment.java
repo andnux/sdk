@@ -9,8 +9,8 @@ import android.widget.ImageView;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import top.andnux.image.ImageLoader;
-import top.andnux.image.ImageLoaderManager;
+import top.andnux.base.image.ImageLoader;
+import top.andnux.base.image.ImageLoaderManager;
 import top.andnux.ui.R;
 
 /**
