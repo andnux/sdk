@@ -12,7 +12,6 @@ import java.util.Random;
 import java.util.UUID;
 
 import top.andnux.compat.ToastCompat;
-import top.andnux.sqlite.OrderBy;
 import top.andnux.sqlite.QueryWhere;
 import top.andnux.sqlite.SQLiteDao;
 import top.andnux.sqlite.SQLiteManager;

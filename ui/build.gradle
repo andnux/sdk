@@ -32,9 +32,9 @@ dependencies {
     api 'androidx.viewpager:viewpager:1.0.0'
     api 'androidx.cardview:cardview:1.0.0'
     api 'androidx.gridlayout:gridlayout:1.0.0'
-    api 'androidx.appcompat:appcompat:1.0.2'
+    api 'androidx.appcompat:appcompat:1.1.0'
     api 'androidx.multidex:multidex:2.0.1'
+    api project(path: ':base')
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
-    implementation project(path: ':image')
 }
