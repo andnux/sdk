@@ -26,13 +26,13 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.google.code.gson:gson:2.8.5'
-    implementation 'com.github.GrenderG:Toasty:1.4.2'
-    implementation 'bouncycastle:bcprov-jdk14:140'
-    implementation 'com.tencent:mmkv:1.0.23'
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation project(path: ':sqlite')
+    api fileTree(dir: 'libs', include: ['*.jar'])
+    api 'com.google.code.gson:gson:2.8.5'
+    api 'com.github.GrenderG:Toasty:1.4.2'
+    api 'bouncycastle:bcprov-jdk14:140'
+    api 'com.tencent:mmkv:1.0.23'
+    api 'androidx.appcompat:appcompat:1.1.0'
+    api project(path: ':sqlite')
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
