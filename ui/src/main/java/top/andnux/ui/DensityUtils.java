@@ -19,9 +19,9 @@ public class DensityUtils {
         return mApplication;
     }
 
+    @SuppressLint("all")
     private static Application getApplicationInner() {
         try {
-            @SuppressLint("PrivateApi")
             Class<?> activityThread = Class.forName("android.app.ActivityThread");
             Method currentApplication = activityThread.getDeclaredMethod("currentApplication");
             Method currentActivityThread = activityThread.getDeclaredMethod("currentActivityThread");

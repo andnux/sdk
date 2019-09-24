@@ -5,7 +5,6 @@ import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -42,7 +41,7 @@ public class ViewPagerGridView extends RelativeLayout implements ViewPager.OnPag
     private int dotNormalColor = Color.YELLOW;
     private GridViewAdapter.OnItemClickListener mListener;
     private int iconTextMargin;
-
+    private List<GridDataBean> mBeans;
     public ViewPagerGridView(Context context) {
         super(context);
         init(context, null);
@@ -66,6 +65,12 @@ public class ViewPagerGridView extends RelativeLayout implements ViewPager.OnPag
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        if (mBeans == null || mBeans.isEmpty()) {
+            return;
+        }
+        double size = mBeans.size();
+        size = Math.min(columnCount * rowCount, size);
+        int lines = (int) Math.ceil(size / rowCount);
 //        int childCount = getChildCount();
 //        int heigth  = 0;
 //        for (int i = 0; i < columnCount; i++) {
@@ -122,6 +127,7 @@ public class ViewPagerGridView extends RelativeLayout implements ViewPager.OnPag
     }
 
     public void setBeans(List<GridDataBean> beans) {
+        mBeans = beans;
         int pageCountMax = columnCount * rowCount;
         int surplus = beans.size() % pageCountMax;
         int pageSize = beans.size() / pageCountMax + (surplus == 0 ? 0 : 1);

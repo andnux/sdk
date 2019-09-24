@@ -25,9 +25,9 @@ public class StorageManager {
 
     }
 
+    @SuppressLint("all")
     private Application getApplicationInner() {
         try {
-            @SuppressLint("PrivateApi")
             Class<?> activityThread = Class.forName("android.app.ActivityThread");
             Method currentApplication = activityThread.getDeclaredMethod("currentApplication");
             Method currentActivityThread = activityThread.getDeclaredMethod("currentActivityThread");
@@ -49,6 +49,7 @@ public class StorageManager {
         mStorageDaoClazz = storageDaoClazz;
     }
 
+    @SuppressLint("all")
     public <T> StorageDao<T> getDao(Class<T> clazz) {
         if (mContext == null) {
             mContext = getApplicationInner();

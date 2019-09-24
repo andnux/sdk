@@ -1,19 +1,33 @@
-package top.andnux.utils;
+package top.andnux.base;
 
 import android.annotation.SuppressLint;
 import android.app.Application;
 
 import java.lang.reflect.Method;
 
-public class Utils {
+public class ApplicationManager {
 
-    private static Application mApplication;
+    private static final ApplicationManager ourInstance = new ApplicationManager();
 
-    public static Application getApp() {
-        if (mApplication == null) {
+    public static ApplicationManager getInstance() {
+        return ourInstance;
+    }
+
+    private Application mApplication;
+
+    private ApplicationManager() {
+
+    }
+
+    public Application getApplication() {
+        if (mApplication == null){
             mApplication = getApplicationInner();
         }
         return mApplication;
+    }
+
+    public void setApplication(Application application) {
+        mApplication = application;
     }
 
     @SuppressLint("all")
