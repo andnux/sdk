@@ -29,7 +29,7 @@ dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
     api 'com.google.code.gson:gson:2.8.5'
     api 'com.github.GrenderG:Toasty:1.4.2'
-    api 'bouncycastle:bcprov-jdk14:140'
+    api 'org.bouncycastle:bcprov-jdk15to18:1.63'
     api 'com.tencent:mmkv:1.0.23'
     api 'androidx.appcompat:appcompat:1.1.0'
     api project(path: ':sqlite')
