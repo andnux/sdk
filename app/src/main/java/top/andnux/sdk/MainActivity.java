@@ -1,25 +1,27 @@
 package top.andnux.sdk;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
+import java.io.InputStream;
 import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
-import top.andnux.compat.ToastCompat;
 import top.andnux.sqlite.QueryWhere;
 import top.andnux.sqlite.SQLiteDao;
 import top.andnux.sqlite.SQLiteManager;
 import top.andnux.sqlite.http.SQLiteHttpHelper;
-import top.andnux.zbarui.ScanCodeConfig;
-import top.andnux.zbarui.ScanCodeManager;
+import top.andnux.ui.dialog.BottomSheetDialog;
+import top.andnux.ui.dialog.DividerDecoration;
+import top.andnux.ui.image.BigImageView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    private static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,17 +40,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         for (UserEntity entity : query) {
             Log.e("TAG", entity.toString());
         }
-        SQLiteHttpHelper.init(getApplication(),BuildConfig.DEBUG,
+        SQLiteHttpHelper.init(getApplication(), BuildConfig.DEBUG,
                 getDatabasePath("sdk.db"));
+        BigImageView imageView = findViewById(R.id.image);
+        try {
+            InputStream image = getResources().openRawResource(R.raw.contacts);
+            imageView.setImage(image);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void onClick(View view) {
-        ScanCodeManager instance = ScanCodeManager.getInstance();
-        ScanCodeConfig options = new ScanCodeConfig();
-        options.TITLE_BACKGROUND_COLOR = ContextCompat.getColor(this, R.color.colorPrimary);
-        options.LINE_COLOR = ContextCompat.getColor(this, R.color.colorPrimary);
-        options.CORNER_COLOR = ContextCompat.getColor(this, R.color.colorPrimary);
-        instance.init(options);
-        instance.startScan(MainActivity.this, result -> ToastCompat.showShortText(MainActivity.this, result));
+//        ScanCodeManager instance = ScanCodeManager.getInstance();
+//        ScanCodeConfig options = new ScanCodeConfig();
+//        options.TITLE_BACKGROUND_COLOR = ContextCompat.getColor(this, R.color.colorPrimary);
+//        options.LINE_COLOR = ContextCompat.getColor(this, R.color.colorPrimary);
+//        options.CORNER_COLOR = ContextCompat.getColor(this, R.color.colorPrimary);
+//        instance.init(options);
+//        instance.startScan(MainActivity.this, result -> ToastCompat.showShortText(MainActivity.this, result));
+        new BottomSheetDialog(this)
+                .setTitle("标题")
+                .setTitleColor(Color.BLACK)
+                .setBackgroundColor(Color.TRANSPARENT)
+                .addItemDecoration(new DividerDecoration(this,DividerDecoration.ALL))
+                .addSheetItem("相机", BottomSheetDialog.SheetItemColor.Blue, which -> {
+
+                }).addSheetItem("相册", BottomSheetDialog.SheetItemColor.Blue, which -> {
+
+                }).show();
     }
 }
