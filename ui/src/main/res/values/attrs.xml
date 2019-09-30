@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <declare-styleable name="UIActivityIndicatorView">
+        <attr name="AIV_startColor" format="color" />
+        <attr name="AIV_startAngle" format="integer" />
+        <attr name="AIV_strokeWidth" format="dimension" />
+    </declare-styleable>
     <declare-styleable name="ViewPagerGridView">
         <!--多少行-->
         <attr name="row_count" format="integer" />
