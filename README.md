@@ -7,7 +7,7 @@ allprojects {
     }
 }
 ```
-- Step 2. Add the dependency
+- **Step 2.** Add the dependency
 ```groovy
 dependencies {
     implementation 'com.github.andnux:sdk:0.0.14'
