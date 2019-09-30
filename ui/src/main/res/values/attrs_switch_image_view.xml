@@ -1,0 +1,10 @@
+<resources>
+    <declare-styleable name="SwitchImageView">
+        <attr name="res_open" format="reference" />
+        <attr name="res_close" format="reference" />
+        <attr name="state" format="enum" >
+            <enum name="open" value="1"/>
+            <enum name="close" value="0"/>
+        </attr>
+    </declare-styleable>
+</resources>
