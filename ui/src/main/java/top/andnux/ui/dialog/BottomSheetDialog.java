@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -32,15 +33,16 @@ public class BottomSheetDialog {
     private TextView txt_cancel;
     private boolean showTitle = false;
     private RecyclerView mRecyclerView;
-    private List<SheetItem> sheetItemList;
+    private List<SheetItem> sheetItemList = new ArrayList<>();
     private Display display;
     private boolean showCancel = true;
     private RecyclerView.LayoutManager mLayoutManager;
     private RecyclerView.Adapter mAdapter;
 
-    public void setAdapter(RecyclerView.Adapter adapter) {
+    public BottomSheetDialog setAdapter(RecyclerView.Adapter adapter) {
         mAdapter = adapter;
         mRecyclerView.setAdapter(mAdapter);
+        return this;
     }
 
     public BottomSheetDialog(Context context) {
@@ -81,6 +83,16 @@ public class BottomSheetDialog {
         return this;
     }
 
+    public BottomSheetDialog addItemDecoration(RecyclerView.ItemDecoration itemDecoration) {
+        mRecyclerView.addItemDecoration(itemDecoration);
+        return this;
+    }
+
+    public BottomSheetDialog setBackgroundColor(int color) {
+        mRecyclerView.setBackgroundColor(color);
+        return this;
+    }
+
     public BottomSheetDialog setTitle(String title) {
         showTitle = true;
         txt_title.setVisibility(View.VISIBLE);
@@ -88,10 +100,36 @@ public class BottomSheetDialog {
         return this;
     }
 
+    public BottomSheetDialog setShowTitle(boolean showTitle) {
+        this.showTitle = showTitle;
+        txt_title.setVisibility(showTitle ? View.VISIBLE : View.GONE);
+        return this;
+    }
+
+    public BottomSheetDialog setTitleColor(int color) {
+        txt_title.setTextColor(color);
+        return this;
+    }
+
+    public BottomSheetDialog setTitleBackground(Drawable background) {
+        txt_title.setBackground(background);
+        return this;
+    }
+
     public BottomSheetDialog setCancel(String title) {
         showCancel = true;
         txt_cancel.setVisibility(View.VISIBLE);
         txt_cancel.setText(title);
+        return this;
+    }
+
+    public BottomSheetDialog setCancel(int color) {
+        txt_cancel.setTextColor(color);
+        return this;
+    }
+
+    public BottomSheetDialog setCancelBackground(Drawable background) {
+        txt_cancel.setBackground(background);
         return this;
     }
 
@@ -126,33 +164,25 @@ public class BottomSheetDialog {
     }
 
     private void setSheetItems() {
-        int size = sheetItemList.size();
+        if (showTitle) {
+            txt_title.setVisibility(View.VISIBLE);
+        } else {
+            txt_title.setVisibility(View.GONE);
+        }
         if (showCancel) {
             txt_cancel.setVisibility(View.VISIBLE);
         } else {
             txt_cancel.setVisibility(View.GONE);
         }
-        RecyclerView.LayoutManager layoutManager = mRecyclerView.getLayoutManager();
-        if (layoutManager == null) {
-            layoutManager = new LinearLayoutManager(context);
-            mRecyclerView.setLayoutManager(layoutManager);
-        }
-        if (sheetItemList == null || sheetItemList.size() <= 0) {
-            return;
-        }
-        if (layoutManager instanceof LinearLayoutManager) {
-            LinearLayoutManager linearLayoutManager = (LinearLayoutManager) layoutManager;
-            if (linearLayoutManager.getOrientation() == RecyclerView.VERTICAL) {
-                if (size >= 7) {
-                    LayoutParams params = (LayoutParams) mRecyclerView
-                            .getLayoutParams();
-                    params.height = display.getHeight() / 2;
-                    mRecyclerView.setLayoutParams(params);
-                }
-            }
+        if (mLayoutManager == null) {
+            mLayoutManager = new LinearLayoutManager(context);
+            mRecyclerView.setLayoutManager(mLayoutManager);
         }
         if (mAdapter == null) {
             mAdapter = new ListRecyclerAdapter(context, sheetItemList, showTitle, dialog);
+            mRecyclerView.setAdapter(mAdapter);
+        } else {
+            mRecyclerView.setLayoutManager(mLayoutManager);
             mRecyclerView.setAdapter(mAdapter);
         }
     }
@@ -251,7 +281,6 @@ public class BottomSheetDialog {
             }
 
             final OnSheetItemClickListener listener = sheetItem.itemClickListener;
-
             holder.mTextView.setText(strItem);
             holder.mTextView.setTextSize(18);
             holder.mTextView.setGravity(Gravity.CENTER);

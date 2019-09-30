@@ -27,6 +27,7 @@
         android:fadingEdge="none">
 
         <LinearLayout
+            android:background="@android:color/white"
             android:id="@+id/lLayout_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

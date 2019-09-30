@@ -3,7 +3,6 @@ package top.andnux.ui;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
-import android.widget.ListView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -38,6 +37,11 @@ public class MaxHeightRecyclerView extends RecyclerView {
             }
         }
         array.recycle();
+    }
+
+    public void setMaxHeight(float maxHeight) {
+        mMaxHeight = maxHeight;
+        requestLayout();
     }
 
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
