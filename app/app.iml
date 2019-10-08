@@ -181,11 +181,13 @@
     <orderEntry type="library" name="Gradle: com.tencent:mmkv:1.0.23@aar" level="project" />
     <orderEntry type="library" name="Gradle: io.reactivex.rxjava2:rxandroid:2.1.1@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.soundcloud.android:android-crop:1.0.1@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.github.andnux.ndk:bspatch:0.0.2@aar" level="project" />
     <orderEntry type="module" module-name="mvvm" />
     <orderEntry type="module" module-name="web" />
     <orderEntry type="module" module-name="compat" />
     <orderEntry type="module" module-name="adapter" />
     <orderEntry type="module" module-name="net" />
+    <orderEntry type="module" module-name="update" />
     <orderEntry type="module" module-name="utils" />
     <orderEntry type="module" module-name="sqlite" />
     <orderEntry type="module" module-name="skin" />

@@ -27,5 +27,6 @@ dependencies {
     implementation 'com.github.andnux.sdk:json:0.0.16'
     implementation 'com.github.andnux.sdk:web:0.0.16'
     implementation 'com.github.andnux.sdk:mvvm:0.0.16' 
+    implementation 'com.github.andnux.sdk:update:0.0.16' 
 }
 ```
