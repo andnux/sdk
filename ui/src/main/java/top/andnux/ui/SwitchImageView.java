@@ -9,14 +9,14 @@ import android.view.View;
 import androidx.appcompat.widget.AppCompatImageView;
 
 /**
- *
+ * 两张图片实现开关控件
  */
 public class SwitchImageView extends AppCompatImageView implements View.OnClickListener {
 
     private Drawable mOpenDrawable;
     private Drawable mCloseDrawable;
     private boolean isOpen = false;
-    private OnStateListener mListener;
+    private OnStateListener mStateListener;
 
     public interface OnStateListener {
         void onStateChange(boolean isOpen);
@@ -57,20 +57,24 @@ public class SwitchImageView extends AppCompatImageView implements View.OnClickL
         }
     }
 
-    public OnStateListener getListener() {
-        return mListener;
+    public boolean isOpen() {
+        return isOpen;
     }
 
-    public void setListener(OnStateListener listener) {
-        mListener = listener;
+    public OnStateListener getStateListener() {
+        return mStateListener;
+    }
+
+    public void setStateListener(OnStateListener stateListener) {
+        mStateListener = stateListener;
     }
 
     @Override
     public void onClick(View v) {
         isOpen = !isOpen;
         setOpen(isOpen);
-        if (mListener != null) {
-            mListener.onStateChange(isOpen);
+        if (mStateListener != null) {
+            mStateListener.onStateChange(isOpen);
         }
     }
 }
