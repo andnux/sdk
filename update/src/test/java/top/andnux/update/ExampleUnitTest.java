@@ -2,8 +2,6 @@ package top.andnux.update;
 
 import org.junit.Test;
 
-import top.andnux.update.request.HttpRequest;
-
 import static org.junit.Assert.*;
 
 /**

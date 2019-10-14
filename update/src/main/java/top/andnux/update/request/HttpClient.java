@@ -5,49 +5,49 @@ import android.util.ArrayMap;
 import java.io.InputStream;
 import java.util.Map;
 
-public class HttpRequest {
+public class HttpClient {
 
-    private Request mHttp;
     private String mUrl;
+    private Http mHttp = new DefaultHttp();
     private Map<String, String> mHeaders = new ArrayMap<>();
     private Map<String, Object> mParams = new ArrayMap<>();
     private Callback<InputStream> mCallback;
 
-    public static HttpRequest newInstance() {
-        return new HttpRequest();
+    public static HttpClient newInstance() {
+        return new HttpClient();
     }
 
-    public HttpRequest setUrl(String url) {
+    public HttpClient setUrl(String url) {
         mUrl = url;
         return this;
     }
 
-    public HttpRequest setHttp(Request http) {
+    public HttpClient setHttp(Http http) {
         mHttp = http;
         return this;
     }
 
-    public HttpRequest setCallback(Callback<InputStream> callback) {
+    public HttpClient setCallback(Callback<InputStream> callback) {
         mCallback = callback;
         return this;
     }
 
-    public HttpRequest addHeader(String key, String value) {
+    public HttpClient addHeader(String key, String value) {
         mHeaders.put(key, value);
         return this;
     }
 
-    public HttpRequest addHeaders(Map<String, String> value) {
+    public HttpClient addHeaders(Map<String, String> value) {
         mHeaders.putAll(value);
         return this;
     }
 
-    public HttpRequest addParams(String key, Object value) {
+    public HttpClient addParams(String key, Object value) {
         mParams.put(key, value);
         return this;
     }
 
-    public HttpRequest addParams(Map<String, String> value) {
+    public HttpClient addParams(Map<String, String> value) {
         mParams.putAll(value);
         return this;
     }
