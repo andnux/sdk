@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="top.andnux.net">
@@ -11,10 +12,15 @@
     <application
         android:networkSecurityConfig="@xml/network_security_config"
         tools:targetApi="n">
-        <receiver android:name="top.andnux.net.netstate.NetStateReceiver">
+        <service
+            android:name=".download.service.DownloadService"
+            android:exported="false"></service>
+
+        <receiver android:name=".netstate.NetStateReceiver">
             <intent-filter>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
         </receiver>
     </application>
+
 </manifest>

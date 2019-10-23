@@ -26,6 +26,7 @@ public abstract class BaseActivity<T extends ViewDataBinding, VM extends ViewMod
         return -1;
     }
 
+    @SuppressWarnings("all")
     protected VM createViewModel() {
         try {
             Type type = getClass().getGenericSuperclass();

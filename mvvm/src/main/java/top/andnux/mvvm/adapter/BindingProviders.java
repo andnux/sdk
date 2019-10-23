@@ -19,16 +19,7 @@ import top.andnux.mvvm.R;
 
 public class BindingProviders {
 
-    private static ImageLoader sImageLoader = new ImageLoader() {
-
-        @Override
-        public void display(ImageView view, String url,
-                            Drawable loading,
-                            Drawable placeholder,
-                            Drawable error) {
-
-        }
-    };
+    private static ImageLoader sImageLoader = null;
 
     public static void setImageLoader(ImageLoader imageLoader) {
         sImageLoader = imageLoader;
@@ -61,11 +52,13 @@ public class BindingProviders {
 
     @BindingAdapter("url")
     public static void loadImage(ImageView view, String url) {
+        if (sImageLoader == null) return;
         sImageLoader.display(view, url, null, null, null);
     }
 
     @BindingAdapter(value = {"url", "error"}, requireAll = false)
     public static void loadImage(ImageView view, String url, Drawable error) {
+        if (sImageLoader == null) return;
         sImageLoader.display(view, url, null, error, null);
     }
 
@@ -75,6 +68,7 @@ public class BindingProviders {
         if (url == null) {
             view.setImageDrawable(placeHolder);
         } else {
+            if (sImageLoader == null) return;
             sImageLoader.display(view, url, null, placeHolder, error);
         }
     }
@@ -85,6 +79,7 @@ public class BindingProviders {
         if (url == null) {
             view.setImageDrawable(placeHolder);
         } else {
+            if (sImageLoader == null) return;
             sImageLoader.display(view, url, loading, error, placeHolder);
         }
     }

@@ -8,6 +8,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.List;
 
 public class ViewPagerAdapter extends FragmentStatePagerAdapter {
@@ -15,15 +17,15 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     private List<Fragment> mFragments;
     private List<String> mTitles;
 
-    public ViewPagerAdapter(FragmentManager fm, List<Fragment> fragments, List<String> titles) {
-        super(fm);
+    public ViewPagerAdapter(FragmentManager fm, List<Fragment> fragments) {
+        super(fm,FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         mFragments = fragments;
-        mTitles = titles;
     }
 
-    public ViewPagerAdapter(FragmentManager fm, List<Fragment> fragments) {
-        super(fm);
+    public ViewPagerAdapter(FragmentManager fm, List<Fragment> fragments, List<String> titles) {
+        super(fm,FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         mFragments = fragments;
+        mTitles = titles;
     }
 
     @Override
@@ -44,6 +46,7 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
         super(fm);
     }
 
+    @NotNull
     @Override
     public Fragment getItem(int position) {
         return mFragments.get(position);
