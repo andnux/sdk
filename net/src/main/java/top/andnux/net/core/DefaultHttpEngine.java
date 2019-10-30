@@ -82,24 +82,24 @@ public class DefaultHttpEngine implements HttpEngine {
             if (request.getHttpMethod() == HttpMethod.GET) {
                 conn.setRequestMethod("GET");// 提交模式
             } else if (request.getHttpMethod() == HttpMethod.POST) {
+                conn.setDoInput(true);
+                conn.setDoOutput(true);
                 conn.setRequestMethod("POST");// 提交模式
+                OutputStream outputStream = conn.getOutputStream();
+                byte[] body = makeBody(config, request);
+                if (body != null) {
+                    outputStream.write(body);
+                }
+                outputStream.flush();
+                outputStream.close();
             }
             conn.setReadTimeout((int) config.getReadTimeout());
             conn.setConnectTimeout((int) config.getConnectTimeout());
-            conn.setDoInput(true);
-            conn.setDoOutput(true);
             addHeader(config, request, conn);
             CookieStorage storage = config.getCookieStorage();
             String cookie = storage.get(url.getHost());
             System.out.println("cookie = " + cookie);
             conn.setRequestProperty(KEY_HEADER_COOKIE, cookie);
-            OutputStream outputStream = conn.getOutputStream();
-            byte[] body = makeBody(config, request);
-            if (body != null) {
-                outputStream.write(body);
-            }
-            outputStream.flush();
-            outputStream.close();
             int responseCode = conn.getResponseCode();
             if (responseCode == HttpURLConnection.HTTP_OK) {
                 HttpCallback httpCallback = request.getHttpCallback();
