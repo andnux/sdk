@@ -321,7 +321,7 @@ public class ImageLoader {
                 maxWidth,
                 maxHeight,
                 scaleType,
-                Config.RGB_565,
+                Config.ARGB_8888,
                 new ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
