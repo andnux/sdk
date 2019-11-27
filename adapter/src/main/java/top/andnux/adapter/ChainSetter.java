@@ -76,4 +76,7 @@ interface ChainSetter<VH> {
 
     VH setOnTouchListener(int viewId, View.OnTouchListener listener);
 
+    void setVisible(int viewId, boolean visible);
+
+    void setVisible(int viewId, int visible);
 }

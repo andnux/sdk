@@ -5,7 +5,6 @@ import android.graphics.Bitmap;
 import android.graphics.ColorFilter;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.os.Build;
 import android.text.method.MovementMethod;
 import android.util.Log;
 import android.util.SparseArray;
@@ -29,7 +28,7 @@ import androidx.recyclerview.widget.RecyclerView;
  * <p>
  * Created by andnux on 16/3/30.
  */
-public class CommonViewHolder extends RecyclerView.ViewHolder implements ChainSetter<CommonViewHolder> {
+public class CommonViewHolder extends RecyclerView.ViewHolder implements top.andnux.adapter.ChainSetter<top.andnux.adapter.CommonViewHolder> {
 
     private SparseArray<View> childViews = new SparseArray<>();
 
@@ -37,14 +36,14 @@ public class CommonViewHolder extends RecyclerView.ViewHolder implements ChainSe
         super(itemView);
     }
 
-    public static CommonViewHolder get(View convertView, View itemView) {
-        CommonViewHolder holder;
+    public static top.andnux.adapter.CommonViewHolder get(View convertView, View itemView) {
+        top.andnux.adapter.CommonViewHolder holder;
         if (convertView == null) {
-            holder = new CommonViewHolder(itemView);
+            holder = new top.andnux.adapter.CommonViewHolder(itemView);
             convertView = itemView;
             convertView.setTag(holder);
         } else {
-            holder = (CommonViewHolder) convertView.getTag();
+            holder = (top.andnux.adapter.CommonViewHolder) convertView.getTag();
         }
         return holder;
     }
@@ -55,7 +54,7 @@ public class CommonViewHolder extends RecyclerView.ViewHolder implements ChainSe
      */
     @Deprecated
     public <T extends View> T getView(int id) {
-        if (BuildConfig.DEBUG){
+        if (BuildConfig.DEBUG) {
             Log.e("CommonViewHolder", "Deprecated method 'getView(int)', please use 'findViewById(int)' instead.");
         }
         return findViewById(id);
@@ -91,188 +90,198 @@ public class CommonViewHolder extends RecyclerView.ViewHolder implements ChainSe
 
 
     @Override
-    public CommonViewHolder setText(int viewId, CharSequence text) {
+    public top.andnux.adapter.CommonViewHolder setText(int viewId, CharSequence text) {
         TextView textView = findViewById(viewId);
         textView.setText(text);
         return this;
     }
 
     @Override
-    public CommonViewHolder setTextColor(int viewId, int textColor) {
+    public top.andnux.adapter.CommonViewHolder setTextColor(int viewId, int textColor) {
         TextView view = findViewById(viewId);
         view.setTextColor(textColor);
         return this;
     }
 
     @Override
-    public CommonViewHolder setTextColor(int viewId, ColorStateList colorStateList) {
+    public top.andnux.adapter.CommonViewHolder setTextColor(int viewId, ColorStateList colorStateList) {
         TextView view = findViewById(viewId);
         view.setTextColor(colorStateList);
         return this;
     }
 
     @Override
-    public CommonViewHolder setMovementMethod(int viewId, MovementMethod method) {
+    public top.andnux.adapter.CommonViewHolder setMovementMethod(int viewId, MovementMethod method) {
         TextView textView = findViewById(viewId);
         textView.setMovementMethod(method);
         return this;
     }
 
     @Override
-    public CommonViewHolder setImageResource(int viewId, @DrawableRes int resId) {
+    public top.andnux.adapter.CommonViewHolder setImageResource(int viewId, @DrawableRes int resId) {
         ImageView view = findViewById(viewId);
         view.setImageResource(resId);
         return this;
     }
 
     @Override
-    public CommonViewHolder setImageDrawable(int viewId, Drawable drawable) {
+    public top.andnux.adapter.CommonViewHolder setImageDrawable(int viewId, Drawable drawable) {
         ImageView view = findViewById(viewId);
         view.setImageDrawable(drawable);
         return this;
     }
 
     @Override
-    public CommonViewHolder setImageBitmap(int viewId, Bitmap bitmap) {
+    public top.andnux.adapter.CommonViewHolder setImageBitmap(int viewId, Bitmap bitmap) {
         ImageView view = findViewById(viewId);
         view.setImageBitmap(bitmap);
         return this;
     }
 
     @Override
-    public CommonViewHolder setImageUri(int viewId, Uri imageUri) {
+    public top.andnux.adapter.CommonViewHolder setImageUri(int viewId, Uri imageUri) {
         ImageView view = findViewById(viewId);
         view.setImageURI(imageUri);
         return this;
     }
 
     @Override
-    public CommonViewHolder setImageUrlWithLoader(int viewId, String url, ImageLoader loader) {
+    public top.andnux.adapter.CommonViewHolder setImageUrlWithLoader(int viewId, String url, ImageLoader loader) {
         ImageView view = findViewById(viewId);
         loader.loadImage(view, url);
         return this;
     }
 
     @Override
-    public CommonViewHolder setScaleType(int viewId, ImageView.ScaleType type) {
+    public top.andnux.adapter.CommonViewHolder setScaleType(int viewId, ImageView.ScaleType type) {
         ImageView view = findViewById(viewId);
         view.setScaleType(type);
         return this;
     }
 
     @Override
-    public CommonViewHolder setBackgroundColor(int viewId, @ColorInt int bgColor) {
+    public top.andnux.adapter.CommonViewHolder setBackgroundColor(int viewId, @ColorInt int bgColor) {
         View view = findViewById(viewId);
         view.setBackgroundColor(bgColor);
         return this;
     }
 
     @Override
-    public CommonViewHolder setBackgroundResource(int viewId, @DrawableRes int bgRes) {
+    public top.andnux.adapter.CommonViewHolder setBackgroundResource(int viewId, @DrawableRes int bgRes) {
         View view = findViewById(viewId);
         view.setBackgroundResource(bgRes);
         return this;
     }
 
     @Override
-    public CommonViewHolder setColorFilter(int viewId, ColorFilter colorFilter) {
+    public top.andnux.adapter.CommonViewHolder setColorFilter(int viewId, ColorFilter colorFilter) {
         ImageView view = findViewById(viewId);
         view.setColorFilter(colorFilter);
         return this;
     }
 
     @Override
-    public CommonViewHolder setColorFilter(int viewId, int colorFilter) {
+    public top.andnux.adapter.CommonViewHolder setColorFilter(int viewId, int colorFilter) {
         ImageView view = findViewById(viewId);
         view.setColorFilter(colorFilter);
         return this;
     }
 
     @Override
-    public CommonViewHolder setAlpha(int viewId, @FloatRange(from = 0.0, to = 1.0) float value) {
+    public top.andnux.adapter.CommonViewHolder setAlpha(int viewId, @FloatRange(from = 0.0, to = 1.0) float value) {
         View view = findViewById(viewId);
         ViewCompat.setAlpha(view, value);
         return this;
     }
 
     @Override
-    public CommonViewHolder setVisibility(int viewId, int visibility) {
+    public top.andnux.adapter.CommonViewHolder setVisibility(int viewId, int visibility) {
         View view = findViewById(viewId);
         view.setVisibility(visibility);
         return this;
     }
 
     @Override
-    public CommonViewHolder setMax(int viewId, int max) {
+    public top.andnux.adapter.CommonViewHolder setMax(int viewId, int max) {
         ProgressBar view = findViewById(viewId);
         view.setMax(max);
         return this;
     }
 
     @Override
-    public CommonViewHolder setProgress(int viewId, int progress) {
+    public top.andnux.adapter.CommonViewHolder setProgress(int viewId, int progress) {
         ProgressBar view = findViewById(viewId);
         view.setProgress(progress);
         return this;
     }
 
     @Override
-    public CommonViewHolder setRating(int viewId, float rating) {
+    public top.andnux.adapter.CommonViewHolder setRating(int viewId, float rating) {
         RatingBar view = findViewById(viewId);
         view.setRating(rating);
         return this;
     }
 
     @Override
-    public CommonViewHolder setTag(int viewId, Object tag) {
+    public top.andnux.adapter.CommonViewHolder setTag(int viewId, Object tag) {
         View view = findViewById(viewId);
         view.setTag(tag);
         return this;
     }
 
     @Override
-    public CommonViewHolder setEnabled(int viewId, boolean enabled) {
+    public top.andnux.adapter.CommonViewHolder setEnabled(int viewId, boolean enabled) {
         View view = findViewById(viewId);
         view.setEnabled(enabled);
         return this;
     }
 
     @Override
-    public CommonViewHolder setAdapter(int viewId, Adapter adapter) {
+    public top.andnux.adapter.CommonViewHolder setAdapter(int viewId, Adapter adapter) {
         AdapterView<Adapter> view = findViewById(viewId);
         view.setAdapter(adapter);
         return this;
     }
 
     @Override
-    public CommonViewHolder setAdapter(int viewId, RecyclerView.Adapter adapter) {
+    public top.andnux.adapter.CommonViewHolder setAdapter(int viewId, RecyclerView.Adapter adapter) {
         RecyclerView view = findViewById(viewId);
         view.setAdapter(adapter);
         return this;
     }
 
     @Override
-    public CommonViewHolder setChecked(int viewId, boolean checked) {
+    public top.andnux.adapter.CommonViewHolder setChecked(int viewId, boolean checked) {
         Checkable view = findViewById(viewId);
         view.setChecked(checked);
         return this;
     }
 
     @Override
-    public CommonViewHolder setOnClickListener(int viewId, View.OnClickListener listener) {
+    public top.andnux.adapter.CommonViewHolder setOnClickListener(int viewId, View.OnClickListener listener) {
         findViewById(viewId).setOnClickListener(listener);
         return this;
     }
 
     @Override
-    public CommonViewHolder setOnLongClickListener(int viewId, View.OnLongClickListener listener) {
+    public top.andnux.adapter.CommonViewHolder setOnLongClickListener(int viewId, View.OnLongClickListener listener) {
         findViewById(viewId).setOnLongClickListener(listener);
         return this;
     }
 
     @Override
-    public CommonViewHolder setOnTouchListener(int viewId, View.OnTouchListener listener) {
+    public top.andnux.adapter.CommonViewHolder setOnTouchListener(int viewId, View.OnTouchListener listener) {
         findViewById(viewId).setOnTouchListener(listener);
         return this;
+    }
+
+    @Override
+    public void setVisible(int viewId, boolean visible) {
+        findViewById(viewId).setVisibility(visible ? View.VISIBLE : View.GONE);
+    }
+
+    @Override
+    public void setVisible(int viewId, int visible) {
+        findViewById(viewId).setVisibility(visible);
     }
 }

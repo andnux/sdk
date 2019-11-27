@@ -33,136 +33,136 @@ public class ExtendViewHolder {
         currentView = view;
     }
 
-    static ExtendViewHolder get(View view) {
-        return new ExtendViewHolder(view);
+    static top.andnux.adapter.ExtendViewHolder get(View view) {
+        return new top.andnux.adapter.ExtendViewHolder(view);
     }
 
-    public ExtendViewHolder setText(CharSequence text) {
+    public top.andnux.adapter.ExtendViewHolder setText(CharSequence text) {
         ((TextView) currentView).setText(text);
         return this;
     }
 
-    public ExtendViewHolder setTextColor(int textColor) {
+    public top.andnux.adapter.ExtendViewHolder setTextColor(int textColor) {
         ((TextView) currentView).setTextColor(textColor);
         return this;
     }
 
-    public ExtendViewHolder setTextColor(ColorStateList colorStateList) {
+    public top.andnux.adapter.ExtendViewHolder setTextColor(ColorStateList colorStateList) {
         ((TextView) currentView).setTextColor(colorStateList);
         return this;
     }
 
-    public ExtendViewHolder setMovementMethod(MovementMethod method) {
+    public top.andnux.adapter.ExtendViewHolder setMovementMethod(MovementMethod method) {
         ((TextView) currentView).setMovementMethod(method);
         return this;
     }
 
-    public ExtendViewHolder setImageResource(@DrawableRes int resId) {
+    public top.andnux.adapter.ExtendViewHolder setImageResource(@DrawableRes int resId) {
         ((ImageView) currentView).setImageResource(resId);
         return this;
     }
 
-    public ExtendViewHolder setImageDrawable(Drawable drawable) {
+    public top.andnux.adapter.ExtendViewHolder setImageDrawable(Drawable drawable) {
         ((ImageView) currentView).setImageDrawable(drawable);
         return this;
     }
 
-    public ExtendViewHolder setImageBitmap(Bitmap bitmap) {
+    public top.andnux.adapter.ExtendViewHolder setImageBitmap(Bitmap bitmap) {
         ((ImageView) currentView).setImageBitmap(bitmap);
         return this;
     }
 
-    public ExtendViewHolder setImageUri(Uri imageUri) {
+    public top.andnux.adapter.ExtendViewHolder setImageUri(Uri imageUri) {
         ((ImageView) currentView).setImageURI(imageUri);
         return this;
     }
 
-    public ExtendViewHolder setScaleType(ImageView.ScaleType type) {
+    public top.andnux.adapter.ExtendViewHolder setScaleType(ImageView.ScaleType type) {
         ((ImageView) currentView).setScaleType(type);
         return this;
     }
 
-    public ExtendViewHolder setBackgroundColor(@ColorInt int bgColor) {
+    public top.andnux.adapter.ExtendViewHolder setBackgroundColor(@ColorInt int bgColor) {
         currentView.setBackgroundColor(bgColor);
         return this;
     }
 
-    public ExtendViewHolder setBackgroundResource(@DrawableRes int bgRes) {
+    public top.andnux.adapter.ExtendViewHolder setBackgroundResource(@DrawableRes int bgRes) {
         currentView.setBackgroundResource(bgRes);
         return this;
     }
 
-    public ExtendViewHolder setColorFilter(ColorFilter colorFilter) {
+    public top.andnux.adapter.ExtendViewHolder setColorFilter(ColorFilter colorFilter) {
         ((ImageView) currentView).setColorFilter(colorFilter);
         return this;
     }
 
-    public ExtendViewHolder setColorFilter(int colorFilter) {
+    public top.andnux.adapter.ExtendViewHolder setColorFilter(int colorFilter) {
         ((ImageView) currentView).setColorFilter(colorFilter);
         return this;
     }
 
-    public ExtendViewHolder setAlpha(@FloatRange(from = 0.0, to = 1.0) float value) {
+    public top.andnux.adapter.ExtendViewHolder setAlpha(@FloatRange(from = 0.0, to = 1.0) float value) {
         ViewCompat.setAlpha(currentView, value);
         return this;
     }
 
-    public ExtendViewHolder setVisibility(int visibility) {
+    public top.andnux.adapter.ExtendViewHolder setVisibility(int visibility) {
         currentView.setVisibility(visibility);
         return this;
     }
 
-    public ExtendViewHolder setMax(int max) {
+    public top.andnux.adapter.ExtendViewHolder setMax(int max) {
         ((ProgressBar) currentView).setMax(max);
         return this;
     }
 
-    public ExtendViewHolder setProgress(int progress) {
+    public top.andnux.adapter.ExtendViewHolder setProgress(int progress) {
         ((ProgressBar) currentView).setProgress(progress);
         return this;
     }
 
-    public ExtendViewHolder setRating(float rating) {
+    public top.andnux.adapter.ExtendViewHolder setRating(float rating) {
         ((RatingBar) currentView).setRating(rating);
         return this;
     }
 
-    public ExtendViewHolder setTag(Object tag) {
+    public top.andnux.adapter.ExtendViewHolder setTag(Object tag) {
         currentView.setTag(tag);
         return this;
     }
 
-    public ExtendViewHolder setEnabled(boolean enabled) {
+    public top.andnux.adapter.ExtendViewHolder setEnabled(boolean enabled) {
         currentView.setEnabled(enabled);
         return this;
     }
 
-    public ExtendViewHolder setAdapter(Adapter adapter) {
+    public top.andnux.adapter.ExtendViewHolder setAdapter(Adapter adapter) {
         ((AdapterView<Adapter>) currentView).setAdapter(adapter);
         return this;
     }
 
-    public ExtendViewHolder setAdapter(RecyclerView.Adapter adapter) {
+    public top.andnux.adapter.ExtendViewHolder setAdapter(RecyclerView.Adapter adapter) {
         ((RecyclerView) currentView).setAdapter(adapter);
         return this;
     }
 
-    public ExtendViewHolder setChecked(boolean checked) {
+    public top.andnux.adapter.ExtendViewHolder setChecked(boolean checked) {
         ((Checkable) currentView).setChecked(checked);
         return this;
     }
 
-    public ExtendViewHolder setOnClickListener(View.OnClickListener listener) {
+    public top.andnux.adapter.ExtendViewHolder setOnClickListener(View.OnClickListener listener) {
         currentView.setOnClickListener(listener);
         return this;
     }
 
-    public ExtendViewHolder setOnLongClickListener(View.OnLongClickListener listener) {
+    public top.andnux.adapter.ExtendViewHolder setOnLongClickListener(View.OnLongClickListener listener) {
         currentView.setOnLongClickListener(listener);
         return this;
     }
 
-    public ExtendViewHolder setOnTouchListener(View.OnTouchListener listener) {
+    public top.andnux.adapter.ExtendViewHolder setOnTouchListener(View.OnTouchListener listener) {
         currentView.setOnTouchListener(listener);
         return this;
     }

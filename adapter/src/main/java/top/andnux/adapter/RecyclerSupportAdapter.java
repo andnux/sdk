@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +26,7 @@ import top.andnux.adapter.animation.BaseAnimation;
  * Created by andnux on 16/3/30.
  */
 abstract class RecyclerSupportAdapter<T> extends RecyclerView.Adapter<CommonViewHolder>
-        implements IViewBindData<T, CommonViewHolder>, IAnimation, ILayoutManager, IHeaderFooter {
+        implements top.andnux.adapter.IViewBindData<T, CommonViewHolder>, IAnimation, top.andnux.adapter.ILayoutManager, top.andnux.adapter.IHeaderFooter {
 
     final String TAG = "CommonAdapter";
 
@@ -59,7 +58,7 @@ abstract class RecyclerSupportAdapter<T> extends RecyclerView.Adapter<CommonView
      *
      * @param context     Context.
      * @param list        Data list.
-     * @param layoutResId {@link androidx.annotation.LayoutRes}
+     * @param layoutResId {@link LayoutRes}
      */
     public RecyclerSupportAdapter(Context context, List<T> list, @LayoutRes int layoutResId) {
         this.mContext = context;

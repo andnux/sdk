@@ -28,7 +28,7 @@ public interface IMulItemViewType<T> {
      * Layout res.
      *
      * @param viewType {@link #getItemViewType(int, T)}
-     * @return {@link androidx.annotation.LayoutRes}
+     * @return {@link LayoutRes}
      */
     @LayoutRes
     int getLayoutId(int viewType);

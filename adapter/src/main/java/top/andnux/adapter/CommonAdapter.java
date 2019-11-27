@@ -20,7 +20,7 @@ import java.util.List;
  * <p>
  * Created by andnux on 16/3/30.
  */
-public abstract class CommonAdapter<T> extends ListSupportAdapter<T> implements CRUD<T> {
+public abstract class CommonAdapter<T> extends top.andnux.adapter.ListSupportAdapter<T> implements top.andnux.adapter.CRUD<T> {
 
     private LayoutInflater mLayoutInflater;
 
@@ -256,7 +256,7 @@ public abstract class CommonAdapter<T> extends ListSupportAdapter<T> implements 
                 protected void onPostExecute(DiffUtil.DiffResult diffResult) {
                     setData(callback.getNewList());
                     if (diffResult != null) {
-                        diffResult.dispatchUpdatesTo(CommonAdapter.this);
+                        diffResult.dispatchUpdatesTo(top.andnux.adapter.CommonAdapter.this);
                     }
                 }
             }.execute();
