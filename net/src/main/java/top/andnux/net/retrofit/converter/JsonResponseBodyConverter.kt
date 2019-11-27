@@ -1,4 +1,4 @@
-package top.andnux.net.retrofit.adapter
+package top.andnux.net.retrofit.converter
 
 /*
  * Copyright (C) 2015 Square, Inc.
@@ -18,24 +18,16 @@ package top.andnux.net.retrofit.adapter
 
 import java.io.IOException
 import java.lang.reflect.Type
-import java.nio.charset.Charset
 
-import okhttp3.MediaType
-import okhttp3.MediaType.Companion.toMediaType
-import okhttp3.RequestBody
+import okhttp3.ResponseBody
 import retrofit2.Converter
 import top.andnux.json.JsonProxy
 
-internal class JsonRequestBodyConverter<T>(private val mJsonAdapter: JsonProxy, private val mType: Type) : Converter<T, RequestBody> {
+internal class JsonResponseBodyConverter<T>(private val mJsonAdapter: JsonProxy, private val mType: Type) : Converter<ResponseBody, T> {
 
     @Throws(IOException::class)
-    override fun convert(value: T): RequestBody {
-        val json = mJsonAdapter.toJSONString(value)
-        return RequestBody.create(MEDIA_TYPE, json.toByteArray(UTF_8))
-    }
-
-    companion object {
-        private val MEDIA_TYPE = "application/json; charset=UTF-8".toMediaType()
-        private val UTF_8 = Charset.forName("UTF-8")
+    override fun convert(value: ResponseBody): T? {
+        val json = value.string()
+        return mJsonAdapter.parseObject<T>(json, mType)
     }
 }

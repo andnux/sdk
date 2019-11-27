@@ -1,4 +1,4 @@
-package top.andnux.net.retrofit.converter
+package top.andnux.net.retrofit.adapter
 
 import androidx.lifecycle.LiveData
 import retrofit2.Call

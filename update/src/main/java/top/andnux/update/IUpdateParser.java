@@ -19,5 +19,7 @@ package top.andnux.update;
 import top.andnux.update.bean.UpdateInfo;
 
 public interface IUpdateParser {
+
     UpdateInfo parse(String source) throws Exception;
+
 }

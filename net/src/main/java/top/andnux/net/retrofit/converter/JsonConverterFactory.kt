@@ -1,4 +1,4 @@
-package top.andnux.net.retrofit.adapter
+package top.andnux.net.retrofit.converter
 
 import okhttp3.RequestBody
 import okhttp3.ResponseBody

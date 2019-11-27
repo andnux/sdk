@@ -12,9 +12,6 @@ import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
-import top.andnux.net.HttpManager;
-import top.andnux.net.callback.StringCallback;
-import top.andnux.net.core.HttpRequest;
 import top.andnux.sqlite.QueryWhere;
 import top.andnux.sqlite.SQLiteDao;
 import top.andnux.sqlite.SQLiteManager;
@@ -52,26 +49,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        HttpRequest httpRequest = HttpManager.getInstance().newHttpRequest();
-        httpRequest.setUrl("https://bitcoinfees.earn.com/api/v1/fees/recommended");
-        httpRequest.setHttpCallback(new StringCallback() {
-            @Override
-            public void onSuccess(String string) {
-                Log.d(TAG, "onSuccess() called with: string = [" + string + "]");
-            }
-
-            @Override
-            public void onFail(Exception e) {
-                Log.d(TAG, "onFail() called with: e = [" + e + "]");
-            }
-
-            @Override
-            public void onComplete() {
-                Log.d(TAG, "onComplete() called");
-            }
-        });
-        HttpManager.getInstance().sendRequest(httpRequest);
     }
 
     public void onClick(View view) {

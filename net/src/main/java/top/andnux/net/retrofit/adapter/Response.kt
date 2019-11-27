@@ -1,4 +1,4 @@
-package top.andnux.net.retrofit.converter
+package top.andnux.net.retrofit.adapter
 
 class Response<T>(
     var data: T?,
