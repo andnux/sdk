@@ -16,7 +16,7 @@ import java.lang.annotation.RetentionPolicy;
  *     desc  : constants of permission
  * </pre>
  */
-@SuppressLint("InlinedApi")
+
 public final class PermissionConstants {
 
     public static final String CALENDAR   = Manifest.permission_group.CALENDAR;

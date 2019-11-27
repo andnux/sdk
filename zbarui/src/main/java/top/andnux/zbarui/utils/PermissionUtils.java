@@ -1,6 +1,7 @@
 package top.andnux.zbarui.utils;
 
 import android.app.Activity;
+import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -48,7 +49,7 @@ public final class PermissionUtils {
     private List<String> mPermissionsGranted;
     private List<String> mPermissionsDenied;
     private List<String> mPermissionsDeniedForever;
-    private static Context mApp;
+    private static Application mApp;
 
     /**
      * Return the permissions used in application.
@@ -117,7 +118,7 @@ public final class PermissionUtils {
      */
     public static PermissionUtils permission(Context mContext,
                                              @top.andnux.zbarui.utils.PermissionConstants.Permission final String... permissions) {
-        mApp = mContext;
+        mApp = (Application) mContext.getApplicationContext();
         PERMISSIONS = getPermissions();
         return new PermissionUtils(permissions);
     }

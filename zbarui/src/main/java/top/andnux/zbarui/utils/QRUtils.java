@@ -1,5 +1,6 @@
 package top.andnux.zbarui.utils;
 
+import android.app.Application;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
@@ -49,7 +50,6 @@ public class QRUtils {
 
     private static QRUtils instance;
     private Bitmap scanBitmap;
-    private Context mContext;
 
     public static QRUtils getInstance() {
         if (instance == null)
@@ -66,7 +66,7 @@ public class QRUtils {
      */
     public String decodeQRcode(String url) throws Exception {
         BitmapFactory.Options options = new BitmapFactory.Options();
-        options.inPreferredConfig = Bitmap.Config.RGB_565;
+        options.inPreferredConfig = Bitmap.Config.ARGB_8888;
         Bitmap qrbmp = BitmapFactory.decodeFile(url, options);
         if (qrbmp != null) {
             return decodeQRcode(qrbmp);
@@ -470,7 +470,7 @@ public class QRUtils {
         int width = Math.max(first.getWidth(), second.getWidth());
         Bitmap newBitmap = Bitmap.createBitmap(
                 width,
-                first.getHeight() + second.getHeight(), Bitmap.Config.ARGB_4444);
+                first.getHeight() + second.getHeight(), Bitmap.Config.ARGB_8888);
         Canvas cv = new Canvas(newBitmap);
         cv.drawBitmap(first, 0, 0, null);
         cv.drawBitmap(second, fromPoint.x, fromPoint.y, null);
@@ -544,8 +544,8 @@ public class QRUtils {
      *
      * @return the width of screen, in pixel
      */
-    public int getScreenWidth(Context mContext) {
-        WindowManager wm = (WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE);
+    public int getScreenWidth(Context context) {
+        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         Point point = new Point();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
             //noinspection ConstantConditions
@@ -562,8 +562,8 @@ public class QRUtils {
      *
      * @return the height of screen, in pixel
      */
-    public int getScreenHeight(Context mContext) {
-        WindowManager wm = (WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE);
+    public int getScreenHeight(Context context) {
+        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         Point point = new Point();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
             //noinspection ConstantConditions

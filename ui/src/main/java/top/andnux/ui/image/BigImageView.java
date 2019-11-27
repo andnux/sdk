@@ -49,7 +49,7 @@ public class BigImageView extends View implements GestureDetector.OnGestureListe
     }
 
     public void setImage(InputStream image) throws Exception {
-        setImage(image, Bitmap.Config.RGB_565);
+        setImage(image, Bitmap.Config.ARGB_8888);
     }
 
     public void setImage(InputStream image, Bitmap.Config config) throws Exception {
