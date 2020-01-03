@@ -61,35 +61,44 @@ public class ScanCodeActivity extends Activity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        options = (ScanCodeConfig) getIntent().getExtras().get(ScanCodeConfig.EXTRA_THIS_CONFIG);
+        try {
+            Bundle extras = getIntent().getExtras();
+            if (extras != null) {
+                options = (ScanCodeConfig) extras.get(ScanCodeConfig.EXTRA_THIS_CONFIG);
+            }
+            if (options != null) {
+                switch (options.getSCREEN_ORIENTATION()) {
+                    case ScanCodeConfig.SCREEN_LANDSCAPE:
+                        if (this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+                            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+                        }
+                        break;
+                    case ScanCodeConfig.SCREEN_PORTRAIT:
+                        if (this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+                            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+                        }
+                        break;
+                    case ScanCodeConfig.SCREEN_SENSOR:
+                        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
+                        break;
+                    default:
+                        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+                        break;
+                }
 
-        switch (options.getSCREEN_ORIENTATION()) {
-            case ScanCodeConfig.SCREEN_LANDSCAPE:
-                if (this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
-                    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-                }
-                break;
-            case ScanCodeConfig.SCREEN_PORTRAIT:
-                if (this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
-                    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-                }
-                break;
-            case ScanCodeConfig.SCREEN_SENSOR:
-                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
-                break;
-            default:
-                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-                break;
+                Symbol.scanType = options.getScan_type();
+                Symbol.scanFormat = options.getCustombarcodeformat();
+                Symbol.is_only_scan_center = options.isOnly_center();
+                Symbol.is_auto_zoom = options.isAuto_zoom();
+                Symbol.screenWidth = QRUtils.getInstance().getScreenWidth(this);
+                Symbol.screenHeight = QRUtils.getInstance().getScreenHeight(this);
+            }
+
+            setContentView(R.layout.activity_scan_code);
+            initView();
+        }catch (Exception e){
+            e.printStackTrace();
         }
-
-        Symbol.scanType = options.getScan_type();
-        Symbol.scanFormat = options.getCustombarcodeformat();
-        Symbol.is_only_scan_center = options.isOnly_center();
-        Symbol.is_auto_zoom = options.isAuto_zoom();
-        Symbol.screenWidth = QRUtils.getInstance().getScreenWidth(this);
-        Symbol.screenHeight = QRUtils.getInstance().getScreenHeight(this);
-        setContentView(R.layout.activity_scan_code);
-        initView();
     }
 
 
@@ -243,7 +252,7 @@ public class ScanCodeActivity extends Activity implements View.OnClickListener {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode == RESULT_OK) {
+        if (resultCode == RESULT_OK && data != null && data.getData() != null) {
             switch (requestCode) {
                 case REQUEST_IMAGE_GET:
                     if (options.isNeed_crop()) {
@@ -310,8 +319,6 @@ public class ScanCodeActivity extends Activity implements View.OnClickListener {
 
                     }
                 });
-
-
             } catch (Exception e) {
                 Toast.makeText(getApplicationContext(), getString(R.string.identifying_anomalies), Toast.LENGTH_SHORT).show();
                 closeProgressDialog();
