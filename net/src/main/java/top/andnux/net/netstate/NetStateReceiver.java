@@ -26,24 +26,21 @@ public class NetStateReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        ConnectivityManager manager = (ConnectivityManager) context.
-                getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = manager.getActiveNetworkInfo();
         if (intent == null || intent.getAction() == null) {
             Log.e("TAG", "网络异常了");
             return;
         }
         if (intent.getAction().equalsIgnoreCase(
                 "android.net.conn.CONNECTIVITY_CHANGE")) {
-            mNetState = NetUtil.getNetState();
-            if (NetUtil.isNetworkAvailable()) {
+            mNetState = NetUtil.getNetState(context);
+            if (NetUtil.isNetworkAvailable(context)) {
                 Log.e("TAG", "网络连接了");
-                if (this.mNetListener != null){
+                if (this.mNetListener != null) {
                     this.mNetListener.onConnect(mNetState);
                 }
             } else {
                 Log.e("TAG", "无网络");
-                if (this.mNetListener != null){
+                if (this.mNetListener != null) {
                     this.mNetListener.onDisConnect();
                 }
             }

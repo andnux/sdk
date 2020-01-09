@@ -15,8 +15,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import top.andnux.utils.Utils;
 import top.andnux.net.netstate.annotation.NetSupport;
+import top.andnux.utils.Utils;
 
 public class NetStateManager implements NetStateListener {
 
@@ -36,6 +36,7 @@ public class NetStateManager implements NetStateListener {
     private NetStateManager() {
         mNetBroadcastReceiver = new NetStateReceiver();
         mNetBroadcastReceiver.setNetListener(this);
+        init(Utils.getApp());
     }
 
     public NetStateListener getStateListener() {
@@ -46,7 +47,8 @@ public class NetStateManager implements NetStateListener {
         mStateListener = stateListener;
     }
 
-    public static void init(Application context) {
+    private void init(Application context) {
+        if (context == null) return;
         getInstance().mApplication = context;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             ConnectivityManager service = (ConnectivityManager) NetStateManager.getInstance().getApplication().
@@ -90,7 +92,7 @@ public class NetStateManager implements NetStateListener {
         mNetChangeObservers.add(observer);
         if (isFirst) {
             isFirst = false;
-            NetState netState = NetUtil.getNetState();
+            NetState netState = NetUtil.getNetState(mApplication);
             if (netState == NetState.NONE && observer != null) {
                 observer.onConnect(NetState.NONE);
             }

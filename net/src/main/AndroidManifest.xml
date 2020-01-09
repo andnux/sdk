@@ -14,7 +14,7 @@
         tools:targetApi="n">
         <service
             android:name=".download.service.DownloadService"
-            android:exported="false"></service>
+            android:exported="false"/>
 
         <receiver android:name=".netstate.NetStateReceiver">
             <intent-filter>
