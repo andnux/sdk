@@ -4,8 +4,8 @@
     android:layout_height="?actionBarSize"
     android:background="?colorPrimary"
     android:orientation="horizontal"
-    android:paddingLeft="@dimen/dp10"
-    android:paddingRight="@dimen/dp10">
+    android:paddingStart="@dimen/dp10"
+    android:paddingEnd="@dimen/dp10">
 
     <TextView
         android:id="@+id/snackbar_text"

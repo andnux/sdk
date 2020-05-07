@@ -34,10 +34,10 @@
             android:id="@+id/tv_album"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_gravity="right"
+            android:layout_gravity="end"
             android:gravity="center"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
             android:text="@string/scan_album"
             android:textColor="@android:color/white" />
 
@@ -151,8 +151,8 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="right|center_vertical"
-        android:layout_marginRight="30dp"
+        android:layout_gravity="end|center_vertical"
+        android:layout_marginEnd="30dp"
         android:orientation="vertical">
 
         <top.andnux.zbarui.view.VerticalSeekBar

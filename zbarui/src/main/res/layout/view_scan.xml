@@ -24,7 +24,7 @@
                     android:id="@+id/cnv_left_bottom"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:layout_gravity="bottom|left"
+                    android:layout_gravity="bottom|start"
                     app:corner_gravity="leftBottom"
                     app:corner_width="5dp" />
 
@@ -32,7 +32,7 @@
                     android:id="@+id/cnv_right_top"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:layout_gravity="right|top"
+                    android:layout_gravity="end|top"
                     app:corner_gravity="rightTop"
                     app:corner_width="5dp" />
 
@@ -41,7 +41,7 @@
                     android:id="@+id/cnv_right_bottom"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:layout_gravity="right|bottom"
+                    android:layout_gravity="end|bottom"
                     app:corner_gravity="rightBottom"
                     app:corner_width="5dp" />
 
